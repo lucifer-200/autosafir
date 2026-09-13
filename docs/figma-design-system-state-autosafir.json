@@ -1,0 +1,39 @@
+{
+  "fileKey": "No5FHcf9Le1wLbW3lEbDzW",
+  "url": "https://www.figma.com/design/No5FHcf9Le1wLbW3lEbDzW",
+  "validatedAt": "2026-09-12",
+  "phase": "phase-9-frames-specified",
+  "collections": {
+    "primitives": "VariableCollectionId:3:2",
+    "themeDark": "VariableCollectionId:3:3",
+    "themeLight": "VariableCollectionId:3:4",
+    "dimensions": "VariableCollectionId:3:5"
+  },
+  "counts": {
+    "variables": 63,
+    "primitives": 23,
+    "themeDark": 15,
+    "themeLight": 15,
+    "dimensions": 10,
+    "textStyles": 6,
+    "effectStyles": 2
+  },
+  "validation": {
+    "invalidAliases": 0,
+    "semanticVariablesWithoutWebSyntax": 0
+  },
+  "pages": {
+    "cover": "0:1",
+    "foundationsAndGettingStarted": "6:4",
+    "componentsAndUtilities": "6:5"
+  },
+  "nodes": {
+    "coverFrame": "6:6"
+  },
+  "planConstraints": [
+    "Figma Starter does not support multiple modes in one collection; dark and light are separate single-mode semantic collections.",
+    "Figma Starter is limited to three pages, so the documentation structure is compressed into Cover, Foundations + Getting Started, and Components + Utilities.",
+    "The Figma MCP call limit was reached after the cover was created; foundations documentation and component canvases remain pending.",
+    "Phase 9 frames are specified in docs/phase-9-figma-frames.md because the connected Starter/View seat exhausted MCP tool calls again during implementation."
+  ]
+}

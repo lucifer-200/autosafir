@@ -1,0 +1,67 @@
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --as-color-canvas: #080808;
+  --as-color-canvas-subtle: #111111;
+  --as-color-surface: #171717;
+  --as-color-surface-strong: #202020;
+  --as-color-foreground: #f5f2ea;
+  --as-color-muted: #b8b3a8;
+  --as-color-accent: #c6a15b;
+  --as-color-accent-soft: #d8be82;
+  --as-color-accent-contrast: #080808;
+  --as-color-border: #34322f;
+  --as-color-focus: #d8be82;
+  --as-color-available: #d8be82;
+  --as-color-reserved: #b78a4a;
+  --as-color-sold: #8e8a82;
+  --as-color-danger: #d58b82;
+
+  --as-shadow-subtle: 0 1px 0 rgb(255 255 255 / 0.04);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --as-color-canvas: #f5f2ea;
+  --as-color-canvas-subtle: #ebe5d9;
+  --as-color-surface: #faf8f3;
+  --as-color-surface-strong: #e2dacb;
+  --as-color-foreground: #171717;
+  --as-color-muted: #625e56;
+  --as-color-accent: #b4924f;
+  --as-color-accent-soft: #c7a866;
+  --as-color-accent-contrast: #171717;
+  --as-color-border: #d3cab9;
+  --as-color-focus: #171717;
+  --as-color-available: #8a6d34;
+  --as-color-reserved: #76592c;
+  --as-color-sold: #6f6a62;
+  --as-color-danger: #8f352f;
+
+  --as-shadow-subtle: 0 1px 0 rgb(23 23 23 / 0.08);
+}
+
+@theme inline {
+  --color-canvas: var(--as-color-canvas);
+  --color-canvas-subtle: var(--as-color-canvas-subtle);
+  --color-surface: var(--as-color-surface);
+  --color-surface-strong: var(--as-color-surface-strong);
+  --color-foreground: var(--as-color-foreground);
+  --color-muted: var(--as-color-muted);
+  --color-accent: var(--as-color-accent);
+  --color-accent-soft: var(--as-color-accent-soft);
+  --color-accent-contrast: var(--as-color-accent-contrast);
+  --color-border: var(--as-color-border);
+  --color-focus: var(--as-color-focus);
+  --color-available: var(--as-color-available);
+  --color-reserved: var(--as-color-reserved);
+  --color-sold: var(--as-color-sold);
+  --color-danger: var(--as-color-danger);
+
+  --font-sans: "Estedad Variable", sans-serif;
+  --font-technical: "Manrope Variable", sans-serif;
+
+  --shadow-subtle: var(--as-shadow-subtle);
+}

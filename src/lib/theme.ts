@@ -11,7 +11,7 @@ export function isTheme(value: unknown): value is Theme {
 export const themeBootstrapScript = `
 (function () {
   var storageKey = ${JSON.stringify(THEME_STORAGE_KEY)};
-  var theme = "dark";
+  var theme = "light";
 
   try {
     var storedTheme = window.localStorage.getItem(storageKey);

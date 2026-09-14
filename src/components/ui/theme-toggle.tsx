@@ -34,9 +34,9 @@ export function ThemeToggle({ variant = "default" }: ThemeToggleProps) {
     },
     () => {
       const activeTheme = document.documentElement.dataset.theme;
-      return isTheme(activeTheme) ? activeTheme : "dark";
+      return isTheme(activeTheme) ? activeTheme : "light";
     },
-    () => "dark",
+    () => "light",
   );
 
   function toggleTheme() {

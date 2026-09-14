@@ -14,9 +14,13 @@ export function PublicAppShell({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <SiteHeader />
-      <PageTransition>{children}</PageTransition>
-      <SiteFooter />
+      {pathname !== "/" ? <SiteHeader /> : null}
+      {pathname === "/" ? (
+        children
+      ) : (
+        <PageTransition>{children}</PageTransition>
+      )}
+      {pathname !== "/" ? <SiteFooter /> : null}
     </>
   );
 }

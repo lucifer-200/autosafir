@@ -24,16 +24,16 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --as-color-canvas: #f5f2ea;
-  --as-color-canvas-subtle: #ebe5d9;
-  --as-color-surface: #faf8f3;
-  --as-color-surface-strong: #e2dacb;
+  --as-color-canvas: #f8f9fa;
+  --as-color-canvas-subtle: #f0f1f2;
+  --as-color-surface: #ffffff;
+  --as-color-surface-strong: #eceeef;
   --as-color-foreground: #171717;
   --as-color-muted: #625e56;
   --as-color-accent: #b4924f;
   --as-color-accent-soft: #c7a866;
   --as-color-accent-contrast: #171717;
-  --as-color-border: #d3cab9;
+  --as-color-border: #dedfe0;
   --as-color-focus: #171717;
   --as-color-available: #8a6d34;
   --as-color-reserved: #76592c;

@@ -24,12 +24,12 @@ export function SiteHeader() {
 
   return (
     <header
-      className="site-header"
+      className={isHome ? "site-header site-header--showroom" : "site-header"}
       data-overlay={isHome || undefined}
       data-scrolled={isScrolled || undefined}
     >
       <div className="site-header__inner">
-        <SafirLockup compact inverse={isHome && !isScrolled} />
+        <SafirLockup compact />
         <nav className="site-header__desktop-nav" aria-label="ناوبری اصلی">
           {publicNavigation.map((item) => (
             <Link
@@ -43,7 +43,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="site-header__tools">
-          <div className="hidden lg:block">
+          <div className={isHome ? "hidden" : "block"}>
             <ThemeToggle variant="icon" />
           </div>
           <MobileNavigation />

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { DEMO_VEHICLE_SEED } from "@/data/demo-vehicles";
+import { TEST_VEHICLES } from "@/test/vehicle-fixtures";
 
 import {
   countActiveFilters,
@@ -12,10 +12,10 @@ import {
 describe("collection filters", () => {
   it("searches brand, model, and trim without hiding sold vehicles by default", () => {
     expect(
-      filterVehicles(DEMO_VEHICLE_SEED, EMPTY_COLLECTION_FILTERS),
+      filterVehicles(TEST_VEHICLES, EMPTY_COLLECTION_FILTERS),
     ).toHaveLength(3);
     expect(
-      filterVehicles(DEMO_VEHICLE_SEED, {
+      filterVehicles(TEST_VEHICLES, {
         ...EMPTY_COLLECTION_FILTERS,
         search: "studio",
       }).map((vehicle) => vehicle.status),
@@ -24,14 +24,14 @@ describe("collection filters", () => {
 
   it("supports quick statuses and the distinct reserved status", () => {
     expect(
-      filterVehicles(DEMO_VEHICLE_SEED, {
+      filterVehicles(TEST_VEHICLES, {
         ...EMPTY_COLLECTION_FILTERS,
         quickStatus: "AVAILABLE",
       }).map((vehicle) => vehicle.status),
     ).toEqual(["AVAILABLE"]);
 
     expect(
-      filterVehicles(DEMO_VEHICLE_SEED, {
+      filterVehicles(TEST_VEHICLES, {
         ...EMPTY_COLLECTION_FILTERS,
         status: "RESERVED",
       }).map((vehicle) => vehicle.status),
@@ -40,7 +40,7 @@ describe("collection filters", () => {
 
   it("filters exact facets and mileage ranges", () => {
     expect(
-      filterVehicles(DEMO_VEHICLE_SEED, {
+      filterVehicles(TEST_VEHICLES, {
         ...EMPTY_COLLECTION_FILTERS,
         year: "2024",
         mileage: "ZERO",
@@ -49,7 +49,7 @@ describe("collection filters", () => {
   });
 
   it("returns sorted unique facet options and a semantic active count", () => {
-    expect(getFacetOptions(DEMO_VEHICLE_SEED, "year")).toEqual([
+    expect(getFacetOptions(TEST_VEHICLES, "year")).toEqual([
       "2024",
       "2023",
       "2022",

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { DEMO_VEHICLE_SEED } from "@/data/demo-vehicles";
+import { TEST_VEHICLES } from "@/test/vehicle-fixtures";
 import {
   findVehicleBySlug,
   formatVehicleMileage,
@@ -12,25 +12,25 @@ import type { Vehicle } from "@/types/vehicle";
 describe("vehicle detail helpers", () => {
   it("finds a persisted vehicle by exact slug", () => {
     expect(
-      findVehicleBySlug(DEMO_VEHICLE_SEED, "demo-aurora-one-2024")?.model,
+      findVehicleBySlug(TEST_VEHICLES, "demo-aurora-one-2024")?.model,
     ).toBe("Aurora");
-    expect(findVehicleBySlug(DEMO_VEHICLE_SEED, " ")).toBeUndefined();
+    expect(findVehicleBySlug(TEST_VEHICLES, " ")).toBeUndefined();
   });
 
   it("prioritizes related available cars sharing brand and body", () => {
     const current: Vehicle = {
-      ...DEMO_VEHICLE_SEED[0],
+      ...TEST_VEHICLES[0],
       bodyType: "Sedan",
     };
     const sameBody: Vehicle = {
-      ...DEMO_VEHICLE_SEED[1],
+      ...TEST_VEHICLES[1],
       id: "related-one",
       slug: "related-one",
       bodyType: "Sedan",
       status: "AVAILABLE",
     };
     const unrelated: Vehicle = {
-      ...DEMO_VEHICLE_SEED[2],
+      ...TEST_VEHICLES[2],
       id: "related-two",
       slug: "related-two",
       brand: "Other",
@@ -45,6 +45,6 @@ describe("vehicle detail helpers", () => {
   it("formats public labels without a price concept", () => {
     expect(formatVehicleMileage(0)).toBe("صفر کیلومتر");
     expect(formatVehicleMileage(12000)).toContain("کیلومتر");
-    expect(getVehicleDisplayName(DEMO_VEHICLE_SEED[0])).toBe("Demo Aurora One");
+    expect(getVehicleDisplayName(TEST_VEHICLES[0])).toBe("Demo Aurora One");
   });
 });

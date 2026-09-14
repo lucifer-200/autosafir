@@ -1,0 +1,47 @@
+import type { Vehicle } from "@/types/vehicle";
+
+// Fictional records belong in tests only. Public demo data is source-backed.
+export const TEST_VEHICLES: readonly Vehicle[] = [
+  {
+    id: "90000000-0000-4000-8000-000000000001",
+    slug: "demo-aurora-one-2024",
+    brand: "Demo",
+    model: "Aurora",
+    trim: "One",
+    year: 2024,
+    mileage: 0,
+    bodyType: "Sedan",
+    features: [],
+    media: [],
+    status: "AVAILABLE",
+    createdAt: "2026-01-01T00:00:00.000Z",
+  },
+  {
+    id: "90000000-0000-4000-8000-000000000002",
+    slug: "demo-atelier-two-2023",
+    brand: "Demo",
+    model: "Atelier",
+    trim: "Two",
+    year: 2023,
+    mileage: 12_000,
+    bodyType: "SUV",
+    features: [],
+    media: [],
+    status: "RESERVED",
+    createdAt: "2026-01-02T00:00:00.000Z",
+  },
+  {
+    id: "90000000-0000-4000-8000-000000000003",
+    slug: "demo-studio-three-2022",
+    brand: "Demo",
+    model: "Studio",
+    trim: "Three",
+    year: 2022,
+    mileage: 30_000,
+    bodyType: "Coupe",
+    features: [],
+    media: [],
+    status: "SOLD",
+    createdAt: "2026-01-03T00:00:00.000Z",
+  },
+];

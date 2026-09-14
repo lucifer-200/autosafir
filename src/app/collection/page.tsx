@@ -15,7 +15,10 @@ export default function CollectionPage() {
           AUTOSAFIR · CURATED CARS
         </p>
         <h1>مجموعه خودروها</h1>
-        <p>مرور آرام و دقیق خودروهای نمایشی در یک مجموعه یکپارچه.</p>
+        <p>
+          اسنپ‌شات محتوای عمومی اتو سفیر تا ۱۴ سپتامبر ۲۰۲۶؛ برای تأیید موجودی
+          روز، پیش از مراجعه تماس بگیرید.
+        </p>
       </header>
       <VehicleCollection />
     </main>

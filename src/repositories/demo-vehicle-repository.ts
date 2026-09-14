@@ -1,4 +1,7 @@
-import { DEMO_VEHICLE_SEED } from "@/data/demo-vehicles";
+import {
+  DEMO_VEHICLE_SEED,
+  LEGACY_PLACEHOLDER_VEHICLES,
+} from "@/data/demo-vehicles";
 import {
   createPersistedData,
   parseAndMigratePersistedData,
@@ -49,6 +52,20 @@ interface DemoVehicleRepositoryOptions {
 
 function cloneVehicles(vehicles: readonly Vehicle[]): Vehicle[] {
   return structuredClone([...vehicles]);
+}
+
+export function isLegacyPlaceholderSeed(vehicles: readonly Vehicle[]): boolean {
+  return (
+    vehicles.length === LEGACY_PLACEHOLDER_VEHICLES.length &&
+    LEGACY_PLACEHOLDER_VEHICLES.every(({ id, slug }) =>
+      vehicles.some(
+        (vehicle) =>
+          vehicle.id === id &&
+          vehicle.slug === slug &&
+          vehicle.brand === "Demo",
+      ),
+    )
+  );
 }
 
 export function slugifyVehicle(
@@ -275,7 +292,12 @@ export class DemoVehicleRepository implements VehicleRepository {
         this.persist(false);
         return;
       }
-      this.data = parseAndMigratePersistedData(JSON.parse(stored) as unknown);
+      const persisted = parseAndMigratePersistedData(
+        JSON.parse(stored) as unknown,
+      );
+      this.data = isLegacyPlaceholderSeed(persisted.vehicles)
+        ? createPersistedData(this.seed, persisted.revision + 1)
+        : persisted;
       this.persist(false);
     } catch {
       this.warning = "CORRUPT_STORAGE";

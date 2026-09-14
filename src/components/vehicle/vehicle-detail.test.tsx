@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-import { DEMO_VEHICLE_SEED } from "@/data/demo-vehicles";
+import { TEST_VEHICLES } from "@/test/vehicle-fixtures";
 import type { Vehicle } from "@/types/vehicle";
 
 import { VehicleDetailExperience } from "./vehicle-detail";
@@ -9,7 +9,7 @@ import { VehicleGallery } from "./vehicle-gallery";
 
 describe("VehicleDetailExperience", () => {
   it("keeps a sold vehicle visible and replaces booking with alternatives", () => {
-    const sold = DEMO_VEHICLE_SEED.find((item) => item.status === "SOLD")!;
+    const sold = TEST_VEHICLES.find((item) => item.status === "SOLD")!;
     const { container } = render(
       <VehicleDetailExperience vehicle={sold} related={[]} />,
     );
@@ -28,9 +28,7 @@ describe("VehicleDetailExperience", () => {
   });
 
   it("renders only recorded specifications and the missing-media state", () => {
-    render(
-      <VehicleDetailExperience vehicle={DEMO_VEHICLE_SEED[0]} related={[]} />,
-    );
+    render(<VehicleDetailExperience vehicle={TEST_VEHICLES[0]} related={[]} />);
 
     expect(
       screen.getByRole("img", { name: "تصویر خودرو موجود نیست" }),
@@ -46,7 +44,7 @@ describe("VehicleDetailExperience", () => {
 describe("VehicleGallery", () => {
   it("opens an accessible lightbox, closes on Escape, and restores focus", async () => {
     const vehicle: Vehicle = {
-      ...DEMO_VEHICLE_SEED[0],
+      ...TEST_VEHICLES[0],
       media: [
         { id: "one", type: "IMAGE", src: "/one.jpg", alt: "نمای جلو" },
         { id: "two", type: "IMAGE", src: "/two.jpg", alt: "نمای عقب" },

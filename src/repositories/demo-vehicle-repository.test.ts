@@ -4,6 +4,7 @@ import { DEMO_VEHICLE_SEED } from "@/data/demo-vehicles";
 import {
   createUniqueSlug,
   DemoVehicleRepository,
+  isLegacyPlaceholderSeed,
   slugifyVehicle,
   type StorageLike,
 } from "@/repositories/demo-vehicle-repository";
@@ -99,6 +100,67 @@ describe("DemoVehicleRepository", () => {
     expect((await second.getById(created.id))?.status).toBe("SOLD");
     await second.delete(created.id);
     expect(await second.getById(created.id)).toBeUndefined();
+  });
+
+  it("replaces only the exact legacy public placeholders", async () => {
+    const legacyVehicles = [
+      {
+        id: "10000000-0000-4000-8000-000000000001",
+        slug: "demo-aurora-one-2024",
+        brand: "Demo",
+        model: "Aurora",
+        trim: "One",
+        year: 2024,
+        mileage: 0,
+        features: [],
+        media: [],
+        status: "AVAILABLE" as const,
+        createdAt: "2026-01-01T00:00:00.000Z",
+      },
+      {
+        id: "10000000-0000-4000-8000-000000000002",
+        slug: "demo-atelier-two-2023",
+        brand: "Demo",
+        model: "Atelier",
+        trim: "Two",
+        year: 2023,
+        mileage: 0,
+        features: [],
+        media: [],
+        status: "RESERVED" as const,
+        createdAt: "2026-01-02T00:00:00.000Z",
+      },
+      {
+        id: "10000000-0000-4000-8000-000000000003",
+        slug: "demo-studio-three-2022",
+        brand: "Demo",
+        model: "Studio",
+        trim: "Three",
+        year: 2022,
+        mileage: 0,
+        features: [],
+        media: [],
+        status: "SOLD" as const,
+        createdAt: "2026-01-03T00:00:00.000Z",
+      },
+    ];
+    storage.setItem(
+      VEHICLE_STORAGE_KEY,
+      JSON.stringify({ version: 1, revision: 4, vehicles: legacyVehicles }),
+    );
+
+    const repository = makeRepository();
+    const snapshot = await repository.getSnapshot();
+
+    expect(isLegacyPlaceholderSeed(legacyVehicles)).toBe(true);
+    expect(snapshot.vehicles).toEqual(DEMO_VEHICLE_SEED);
+    expect(
+      JSON.parse(storage.getItem(VEHICLE_STORAGE_KEY) ?? "").revision,
+    ).toBe(5);
+
+    expect(
+      isLegacyPlaceholderSeed([...legacyVehicles, DEMO_VEHICLE_SEED[0]]),
+    ).toBe(false);
   });
 
   it("generates normalized slugs and deterministic unique suffixes", async () => {

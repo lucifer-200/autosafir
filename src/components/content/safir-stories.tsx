@@ -16,8 +16,8 @@ export function SafirStories() {
           </h2>
         </div>
         <p>
-          قاب‌های ثابت و سبک برای نسخه دمو؛ تازه‌ترین محتوای منتشرشده را در صفحه
-          تأییدشده اینستاگرام ببینید.
+          گزیده‌ای منبع‌دار از پست‌های عمومی اتو سفیر؛ هر قاب مستقیماً همان پست
+          را در اینستاگرام باز می‌کند.
         </p>
       </header>
 
@@ -28,7 +28,7 @@ export function SafirStories() {
               href={story.outboundUrl}
               target="_blank"
               rel="noreferrer"
-              aria-label={`${story.title}؛ باز کردن پروفایل اینستاگرام اتو سفیر در پنجره جدید`}
+              aria-label={`${story.title}؛ باز کردن پست اینستاگرام اتو سفیر در پنجره جدید`}
             >
               <Image
                 src={story.poster}
@@ -48,7 +48,7 @@ export function SafirStories() {
                 <strong>{story.title}</strong>
                 <small>{story.description}</small>
                 <span className="story-card__action">
-                  مشاهده صفحه اینستاگرام
+                  مشاهده پست اصلی
                   <ArrowUpLeft size={17} aria-hidden="true" />
                 </span>
               </span>

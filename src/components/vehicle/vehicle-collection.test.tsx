@@ -1,13 +1,13 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { DEMO_VEHICLE_SEED } from "@/data/demo-vehicles";
+import { TEST_VEHICLES } from "@/test/vehicle-fixtures";
 
 import { CollectionExperience } from "./vehicle-collection";
 
 describe("CollectionExperience", () => {
   it("shows every status with stable detail links and no public price", () => {
-    render(<CollectionExperience vehicles={DEMO_VEHICLE_SEED} />);
+    render(<CollectionExperience vehicles={TEST_VEHICLES} />);
 
     expect(screen.getAllByText("موجود").length).toBeGreaterThan(0);
     expect(screen.getAllByText("رزرو شده").length).toBeGreaterThan(0);
@@ -19,7 +19,7 @@ describe("CollectionExperience", () => {
   });
 
   it("updates results from search and quick filters", () => {
-    render(<CollectionExperience vehicles={DEMO_VEHICLE_SEED} />);
+    render(<CollectionExperience vehicles={TEST_VEHICLES} />);
 
     fireEvent.change(
       screen.getByRole("searchbox", { name: "جستجوی برند یا مدل" }),
@@ -50,7 +50,7 @@ describe("CollectionExperience", () => {
   });
 
   it("opens an accessible filter dialog, filters reserved, and restores focus", () => {
-    render(<CollectionExperience vehicles={DEMO_VEHICLE_SEED} />);
+    render(<CollectionExperience vehicles={TEST_VEHICLES} />);
     const trigger = screen.getByRole("button", { name: "فیلترها" });
 
     fireEvent.click(trigger);
@@ -76,7 +76,7 @@ describe("CollectionExperience", () => {
   });
 
   it("presents a recoverable empty state", () => {
-    render(<CollectionExperience vehicles={DEMO_VEHICLE_SEED} />);
+    render(<CollectionExperience vehicles={TEST_VEHICLES} />);
     fireEvent.change(
       screen.getByRole("searchbox", { name: "جستجوی برند یا مدل" }),
       {

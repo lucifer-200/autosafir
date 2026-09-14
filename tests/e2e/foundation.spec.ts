@@ -1,5 +1,23 @@
 import { expect, test, type Page } from "@playwright/test";
 
+import { DEMO_VEHICLE_SEED } from "../../src/data/demo-vehicles";
+
+async function installSeedStatuses(
+  page: Page,
+  statuses: Record<string, "AVAILABLE" | "SOLD" | "RESERVED">,
+) {
+  const vehicles = DEMO_VEHICLE_SEED.map((vehicle) => ({
+    ...vehicle,
+    status: statuses[vehicle.slug] ?? vehicle.status,
+  }));
+  await page.addInitScript((seed) => {
+    localStorage.setItem(
+      "autosafir:vehicles",
+      JSON.stringify({ version: 1, revision: 1, vehicles: seed }),
+    );
+  }, vehicles);
+}
+
 async function gotoHomeWithoutIntro(page: Page) {
   await page.addInitScript(() => {
     sessionStorage.setItem("autosafir:intro-complete", "1");
@@ -157,6 +175,7 @@ test("desktop shell shows primary navigation and footer signature", async ({
 test("collection filters local inventory and keeps sold vehicles visible", async ({
   page,
 }) => {
+  await installSeedStatuses(page, { "mitsubishi-pajero-2022": "SOLD" });
   await page.goto("/collection/");
 
   await expect(
@@ -164,15 +183,15 @@ test("collection filters local inventory and keeps sold vehicles visible", async
   ).toBeVisible();
   await expect(
     page
-      .getByRole("link", { name: "مشاهده Demo Studio" })
+      .getByRole("link", { name: "مشاهده Mitsubishi Pajero" })
       .locator('[data-status="SOLD"]'),
   ).toContainText("فروخته شده");
   await page.getByRole("button", { name: "فروخته‌شده" }).click();
   await expect(
-    page.getByRole("link", { name: "مشاهده Demo Studio" }),
+    page.getByRole("link", { name: "مشاهده Mitsubishi Pajero" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "مشاهده Demo Aurora" }),
+    page.getByRole("link", { name: "مشاهده Volkswagen Tiguan" }),
   ).toHaveCount(0);
   await expect(page.locator("body")).not.toContainText(/قیمت|price/i);
 });
@@ -184,6 +203,7 @@ test("mobile collection filter sheet handles reserved and keyboard dismissal", a
     testInfo.project.name !== "mobile-chromium",
     "mobile collection behavior",
   );
+  await installSeedStatuses(page, { "bmw-428-convertible-2015": "RESERVED" });
   await page.goto("/collection/");
 
   const trigger = page.getByRole("button", { name: "فیلترها" });
@@ -193,7 +213,7 @@ test("mobile collection filter sheet handles reserved and keyboard dismissal", a
   await dialog.getByLabel("وضعیت موجودی").selectOption("RESERVED");
   await dialog.getByRole("button", { name: "نمایش نتیجه" }).click();
   await expect(
-    page.getByRole("link", { name: "مشاهده Demo Atelier" }),
+    page.getByRole("link", { name: "مشاهده BMW 428" }),
   ).toBeVisible();
 
   await trigger.click();
@@ -205,30 +225,33 @@ test("mobile collection filter sheet handles reserved and keyboard dismissal", a
 test("vehicle detail is static-safe, complete, and exposes no public price", async ({
   page,
 }) => {
-  await page.goto("/vehicle/?slug=demo-aurora-one-2024");
+  await page.goto("/vehicle/?slug=volkswagen-tiguan-2018");
 
   await expect(
-    page.getByRole("heading", { level: 1, name: /Demo.*Aurora.*One/ }),
+    page.getByRole("heading", { level: 1, name: /Volkswagen.*Tiguan/ }),
   ).toBeVisible();
-  await expect(page.getByText("موجود", { exact: true })).toBeVisible();
+  await expect(page.locator(".vehicle-detail-hero .vehicle-status")).toHaveText(
+    "موجود",
+  );
   await expect(
     page.getByRole("region", { name: /گالری تصویر و ویدیوی/ }),
   ).toBeVisible();
   await expect(page.getByText("تصویر اختصاصی این خودرو")).toBeVisible();
   await expect(page.getByRole("link", { name: /رزرو بازدید/ })).toHaveAttribute(
     "href",
-    "/book-visit/?vehicle=demo-aurora-one-2024",
+    "/book-visit/?vehicle=volkswagen-tiguan-2018",
   );
   await expect(
     page.getByRole("link", { name: /افزودن به مقایسه/ }),
-  ).toHaveAttribute("href", "/compare/?add=demo-aurora-one-2024");
+  ).toHaveAttribute("href", "/compare/?add=volkswagen-tiguan-2018");
   await expect(page.locator("body")).not.toContainText(/قیمت|price/i);
 });
 
 test("sold detail remains available with an alternatives action", async ({
   page,
 }) => {
-  await page.goto("/vehicle/?slug=demo-studio-three-2022");
+  await installSeedStatuses(page, { "mitsubishi-pajero-2022": "SOLD" });
+  await page.goto("/vehicle/?slug=mitsubishi-pajero-2022");
 
   await expect(page.getByText("SOLD ARCHIVE")).toBeVisible();
   await expect(
@@ -299,11 +322,12 @@ test("a browser-persisted vehicle opens in detail without a rebuild", async ({
 test("compare accepts detail links, persists selection, and shows subtle differences", async ({
   page,
 }) => {
-  await page.goto("/compare/?add=demo-aurora-one-2024");
+  await installSeedStatuses(page, { "mitsubishi-pajero-2022": "SOLD" });
+  await page.goto("/compare/?add=volkswagen-tiguan-2018");
   await expect(
     page.getByRole("heading", { name: "یک خودرو دیگر انتخاب کنید" }),
   ).toBeVisible();
-  await page.getByRole("button", { name: /Demo Studio Three/ }).click();
+  await page.getByRole("button", { name: /Mitsubishi Pajero/ }).click();
 
   const table = page.getByRole("table");
   await expect(table).toBeVisible();
@@ -321,12 +345,12 @@ test("compare enforces three selections and supports removal", async ({
   page,
 }) => {
   await page.goto("/compare/");
-  await page.getByRole("button", { name: /Demo Aurora One/ }).click();
-  await page.getByRole("button", { name: /Demo Atelier Two/ }).click();
-  await page.getByRole("button", { name: /Demo Studio Three/ }).click();
+  await page.getByRole("button", { name: /Volkswagen Tiguan/ }).click();
+  await page.getByRole("button", { name: /BMW 428/ }).click();
+  await page.getByRole("button", { name: /Toyota RAV4/ }).click();
   await expect(page.getByText("حداکثر سه خودرو انتخاب شده است.")).toBeVisible();
 
-  await page.getByRole("button", { name: /حذف Demo Atelier/ }).click();
+  await page.getByRole("button", { name: /حذف BMW 428/ }).click();
   await expect(page.getByText("1 جای خالی")).toBeVisible();
 });
 
@@ -371,12 +395,12 @@ test("sell-your-car completes five truthful demo steps without exposing a price"
 test("booking preselects the vehicle and rejects past dates before demo completion", async ({
   page,
 }) => {
-  await page.goto("/book-visit/?vehicle=demo-aurora-one-2024");
+  await page.goto("/book-visit/?vehicle=volkswagen-tiguan-2018");
 
   await expect(
     page.getByRole("heading", { level: 1, name: "رزرو بازدید" }),
   ).toBeVisible();
-  await expect(page.getByLabel("خودرو")).toHaveValue("demo-aurora-one-2024");
+  await expect(page.getByLabel("خودرو")).toHaveValue("volkswagen-tiguan-2018");
   await page.getByLabel("نام و نام خانوادگی").fill("کاربر نمایشی");
   await page.getByLabel("شماره موبایل").fill("09121234567");
   await page.getByLabel("شعبه").selectOption("beheshti");
@@ -477,9 +501,11 @@ test("journal exports static articles, related inventory action, and resilient s
   await expect(
     page.getByRole("heading", { name: "SAFIR STORIES" }),
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: /خط نور/ })).toHaveAttribute(
+  await expect(
+    page.getByRole("link", { name: /Volkswagen Tiguan/ }),
+  ).toHaveAttribute(
     "href",
-    "https://www.instagram.com/autosafirgallery",
+    "https://www.instagram.com/autosafirgallery/p/Dc0EIIlDPju/",
   );
 
   await page.getByRole("link", { name: /چطور دو تریم نزدیک/ }).click();

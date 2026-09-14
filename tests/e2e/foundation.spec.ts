@@ -19,15 +19,12 @@ async function installSeedStatuses(
 }
 
 async function gotoHomeWithoutIntro(page: Page) {
-  await page.addInitScript(() => {
-    sessionStorage.setItem("autosafir:intro-complete", "1");
-  });
   await page.goto("/");
 }
 
 test("exports an RTL foundation page with a persistent theme", async ({
   page,
-}, testInfo) => {
+}) => {
   await gotoHomeWithoutIntro(page);
 
   await expect(page.locator("html")).toHaveAttribute("lang", "fa");
@@ -36,88 +33,11 @@ test("exports an RTL foundation page with a persistent theme", async ({
     "اتو سفیر",
   );
 
-  if (testInfo.project.name === "mobile-chromium") {
-    await page.getByRole("button", { name: "باز کردن منوی اصلی" }).click();
-  }
-  await page.getByRole("button", { name: "فعال‌کردن پوسته روشن" }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-
+  await page.getByRole("button", { name: "فعال‌کردن پوسته تیره" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.reload();
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-});
-
-test("signature intro is skippable, unlocks scroll, and stays skipped in-session", async ({
-  page,
-}) => {
-  await page.goto("/");
-  const intro = page.getByRole("dialog", { name: "معرفی اتو سفیر" });
-  await expect(intro).toBeVisible();
-  await page.getByRole("button", { name: "رد شدن از معرفی" }).click();
-  await expect(intro).toBeHidden();
-  await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
-  await expect(
-    page.getByRole("heading", { level: 1, name: "اتو سفیر" }),
-  ).toBeVisible();
-  await expect(
-    page.getByRole("link", { name: /مشاهده خودروها/ }),
-  ).toHaveAttribute("href", "/collection/");
-
-  await page.reload();
-  await expect(intro).toHaveCount(0);
-});
-
-test("signature intro honors reduced motion without trapping the page", async ({
-  page,
-}) => {
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
-  await expect(page.getByRole("dialog", { name: "معرفی اتو سفیر" })).toBeHidden(
-    {
-      timeout: 2_000,
-    },
-  );
-  await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
-  await expect(page.locator("[data-render-tier]")).toHaveAttribute(
-    "data-render-tier",
-    "static",
-  );
-  await expect(page.locator(".adaptive-hero-media__canvas")).toHaveCount(0);
-  await expect(
-    page.getByAltText("تصویر مفهومی خودروی لوکس در فضای معماری گرم"),
-  ).toBeVisible();
-});
-
-test("adaptive WebGL falls back cleanly after context loss", async ({
-  page,
-}, testInfo) => {
-  test.skip(
-    testInfo.project.name !== "desktop-chromium",
-    "single capable-device coverage",
-  );
-  await page.addInitScript(() => {
-    sessionStorage.setItem("autosafir:intro-complete", "1");
-    Object.defineProperty(navigator, "deviceMemory", {
-      configurable: true,
-      value: 8,
-    });
-    Object.defineProperty(navigator, "hardwareConcurrency", {
-      configurable: true,
-      value: 8,
-    });
-  });
-  await page.goto("/");
-
-  const media = page.locator("[data-render-tier]");
-  await expect(media).toHaveAttribute("data-render-tier", "webgl");
-  const canvas = page.locator(".adaptive-hero-media__canvas canvas");
-  await expect(canvas).toBeVisible();
-  await canvas.dispatchEvent("webglcontextlost");
-
-  await expect(media).toHaveAttribute("data-render-tier", "cinematic");
-  await expect(canvas).toHaveCount(0);
-  await expect(
-    page.getByAltText("تصویر مفهومی خودروی لوکس در فضای معماری گرم"),
-  ).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
 
 test("publishes a restrictive robots file", async ({ request }) => {
@@ -134,7 +54,7 @@ test("mobile menu supports keyboard dismissal and exposes no admin entry", async
     testInfo.project.name !== "mobile-chromium",
     "mobile shell behavior",
   );
-  await gotoHomeWithoutIntro(page);
+  await page.goto("/collection/");
 
   const trigger = page.getByRole("button", { name: "باز کردن منوی اصلی" });
   await trigger.click();
@@ -161,7 +81,7 @@ test("desktop shell shows primary navigation and footer signature", async ({
   await gotoHomeWithoutIntro(page);
 
   await expect(
-    page.getByRole("navigation", { name: "ناوبری اصلی" }),
+    page.getByRole("navigation", { name: /ناوبری اصلی/ }),
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Developed by AKH" }),
@@ -169,7 +89,7 @@ test("desktop shell shows primary navigation and footer signature", async ({
   await expect(page.getByRole("img", { name: "AKH" })).toBeVisible();
   await expect(
     page.getByRole("button", { name: "باز کردن منوی اصلی" }),
-  ).toBeHidden();
+  ).toHaveCount(0);
 });
 
 test("collection filters local inventory and keeps sold vehicles visible", async ({

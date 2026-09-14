@@ -6,6 +6,16 @@ Primary target: Mobile-first luxury showcase for presentation to AutoSafir
 Current deployment: Static hosting only  
 Future production: ASP.NET Core + SQL Server + n8n
 
+## Approved homepage revision — 2026-09-14
+
+The user's approved homepage redesign supersedes the older home intro, scroll, footer and light-theme requirements below:
+- Home is a fixed viewport showroom with a supplied automotive background, left-side theme controls and rounded contact/destination cards. Wheel/swipe changes cards, not document scroll; other routes retain normal scrolling.
+- Home scenes use `/#collection`, `/#compare`, `/#book-visit`, `/#showroom`; destination links open the existing real routes. Mobile shows one card at a time, with internally scrollable contact details on constrained screens.
+- Default light is glossy white with restrained champagne accents; saved dark preference remains supported.
+- Remove the blocking intro, WebGL home layer, promotional homepage copy and local inventory totals. No replacement 3D is required.
+- Move contact/branch/social information from the public footer to the home showroom card. Keep minimal navigation, demo identity and the custom AKH signature.
+- Keep local CRUD, static export and all internal product flows. See `docs/home-redesign/implementation.md` and root `design-qa.md` for implementation and validation.
+
 ## Product Mission
 ساخت یک Digital Showroom بسیار لوکس، سینمایی و Mobile-first برای AutoSafir که در نسخه Demo خودروهای موجود و فروخته‌شده را نمایش دهد و در صورت عقد قرارداد همان codebase بدون بازنویسی کامل به نسخه Production متصل به Backend، SQL Server و Automationها ارتقا یابد.
 

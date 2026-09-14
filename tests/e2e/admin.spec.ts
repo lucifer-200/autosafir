@@ -151,6 +151,9 @@ test("390px admin stays within the viewport in light and dark reduced motion", a
   test.skip(testInfo.project.name !== "mobile-chromium", "mobile QA");
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "dark" });
+  await page.addInitScript(() =>
+    localStorage.setItem("autosafir-theme-v1", "dark"),
+  );
   await enterAdmin(page);
   await expect
     .poll(() => page.evaluate(() => document.documentElement.scrollWidth))

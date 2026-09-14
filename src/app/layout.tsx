@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "نسخه نمایشی و خصوصی نمایشگاه دیجیتال اتو سفیر؛ بدون قیمت عمومی و بدون ادعای سایت رسمی.",
   icons: {
-    icon: "/images/navigation/showroom-portrait.png",
+    icon: "/branding/favicon.svg",
   },
   robots: {
     index: false,
@@ -36,7 +36,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="fa" dir="rtl" data-theme="dark" suppressHydrationWarning>
+    <html lang="fa" dir="rtl" data-theme="light" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
       </head>

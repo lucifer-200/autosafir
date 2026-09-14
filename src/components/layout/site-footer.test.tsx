@@ -4,12 +4,12 @@ import { describe, expect, it } from "vitest";
 import { SiteFooter } from "./site-footer";
 
 describe("SiteFooter", () => {
-  it("renders confirmed contact channels and the accessible custom AKH mark", () => {
+  it("keeps navigation and AKH without duplicating showroom contact data", () => {
     render(<SiteFooter />);
 
     expect(
-      screen.getByRole("link", { name: "اینستاگرام اتو سفیر" }),
-    ).toHaveAttribute("href", "https://www.instagram.com/autosafirgallery");
+      screen.queryByRole("link", { name: "اینستاگرام اتو سفیر" }),
+    ).not.toBeInTheDocument();
     expect(screen.getByRole("img", { name: "AKH" })).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "Developed by AKH" }),

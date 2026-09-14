@@ -1,75 +1,37 @@
-# AutoSafir Phase 10 — Design QA
+# AutoSafir homepage card/header revision — Design QA
 
 ## Evidence
 
-- Source visual truth: `D:\autosafir\docs\design-references\phase-10-audit\source-direction.png`
-- Combined comparison: `D:\autosafir\docs\design-references\phase-10-audit\source-vs-phase10.png`
-- Mobile WebGL capture: `D:\autosafir\docs\design-references\phase-10-audit\home-mobile-webgl.png`
-- Desktop WebGL capture: `D:\autosafir\docs\design-references\phase-10-audit\home-desktop-webgl.png`
-- Mobile static/light/reduced-motion capture: `D:\autosafir\docs\design-references\phase-10-audit\home-mobile-static-light.png`
-- Source pixels: 853 × 1844.
-- Mobile WebGL capture pixels: 375 × 812 from the Codex in-app browser; its verified CSS viewport was 390 × 844. The browser surface applied its own output scaling.
-- Mobile static capture pixels and CSS viewport: 390 × 844 at deviceScaleFactor 1.
-- Desktop WebGL capture pixels: 1279 × 846; verified browser state had no horizontal overflow.
-- State: homepage hero, first screen, intro already completed; WebGL quality tier for capable-device captures and static tier for light/reduced-motion capture.
-
-The supplied reference is an open navigation composition while Phase 10 changes only the homepage media layer. The comparison therefore evaluates art direction, density, image treatment, and gold-line hierarchy rather than claiming pixel-identical screen fidelity.
-
-## Findings
-
-No actionable P0, P1, or P2 finding remains.
-
-- Typography: Estedad and Manrope hierarchy is unchanged from the approved Phase 9 homepage. Canvas contains no text, so font rendering, wrapping, and antialiasing remain ordinary HTML concerns.
-- Spacing and layout: WebGL is absolutely overlaid within the existing hero media box. It causes no layout shift, crop change, content reflow, or horizontal overflow at 390 px or desktop.
-- Colors and tokens: the aperture uses only the existing champagne-gold value `#D8BE82` at restrained opacity over the obsidian/warm-image composition. No glow, neon, or gradient was introduced.
-- Image quality and asset fidelity: the reliable local showroom portrait remains the critical image and always renders beneath Canvas. No fake 3D vehicle, substitute illustration, handcrafted vehicle SVG, or placeholder model was introduced.
-- Copy and content: all AutoSafir copy, honest demo labelling, price-free public experience, status behavior, heading hierarchy, and calls to action remain unchanged and semantic.
-- Motion: the WebGL aperture adds a small scroll/pointer depth response only on capable devices. It does not trap or pin scroll. DPR is clamped to 1–1.5 and the render loop stops while the page is hidden.
-- Fallbacks: reduced motion, Save-Data, very weak memory/CPU hints, unavailable WebGL, low runtime performance, render errors, and context loss all retain the meaningful static/cinematic image and HTML content.
-- Accessibility: Canvas is `aria-hidden` and pointer-free. The meaningful image keeps its Persian alternative text; controls remain outside Canvas and keyboard-accessible.
-- Icons and controls: Phase 10 introduces no new interactive icon or control and preserves the existing Phosphor icon family and 44 px touch behavior.
-
-## Full-view and focused comparison
-
-The combined view confirms that the implementation retains the reference's obsidian field, warm automotive photography, champagne hairlines, and restrained editorial balance while using one image instead of the reference's crowded image rail. The WebGL bars echo architectural edges already present in the photograph and remain subordinate to the vehicle and AutoSafir lockup.
-
-A focused hero-only review was sufficient because Phase 10 changes no content below the fold. It covered the vehicle crop, four aperture rails, header/logo visibility, image caption, hero heading, CTA contrast, boundary line, and first-screen density in both mobile and desktop captures.
+- Source visual truth: the user-supplied 736×920 ORIZON DESIGN reference in this conversation.
+- Implementation captures: `docs/home-redesign/390x844-light-collection.png`, `390x844-dark-collection.png`, `1440x900-light-collection.png`, `844x390-light-collection.png`, plus all viewport/theme states in the same directory.
+- Captures are Chrome-rendered at DPR 1; the filename records CSS viewport and pixel dimensions. Responsive matrix: 360×640, 390×844, 430×932, 768×1024, 1024×768, 1440×900 and 844×390, light/dark and collection/showroom states.
+- The source is a visual-language reference. Its property imagery and real-estate labels are intentionally replaced with the supplied AutoSafir automotive asset and approved Persian content.
 
 ## Comparison history
 
-1. Initial WebGL visual pass had no P0/P1/P2 layout or art-direction mismatch.
-2. Runtime testing found a P2 resilience issue: the renderer could observe `webglcontextlost` before the scene-level guard, so downgrade was not guaranteed.
-3. Fix: moved context-loss interception to the hero media parent in capture phase, ahead of the renderer target.
-4. Post-fix evidence: the dedicated browser test now changes `data-render-tier` from `webgl` to `cinematic`, removes Canvas, and keeps the semantic image visible.
-5. Console QA found a P3 `/favicon.ico` 404 inherited from the demo shell. Metadata now points the icon to the existing reliable local image; the final in-app browser and static/reduced-motion capture both report zero console errors.
+- Resolved P1: previous implementation used one stationary card surface and swapped its contents. The revision keeps independent route articles, exposes the next card behind the active one and animates outgoing/incoming cards through distinct diagonal GSAP paths with rotation and scale.
+- Resolved P1: previous header sat outside the visual frame and resembled a conventional site header. It is now a white/graphite capsule inside the image, with compact links, primary CTA and round menu control.
+- Resolved P2: light/dark previously behaved mainly as a token swap. The revision changes shell, card material, borders, layered shadow, image brightness/saturation, overlay and control inversion per theme.
+- Resolved P2: the first revised capture showed the redundant bottom collection link beneath the carousel controls and landscape controls outside the frame. The duplicate link was removed and landscape deck position raised. The final automated matrix reports no overflow, offscreen control, obscured control or page error in 28 states.
 
-## Primary interactions tested
+## Required fidelity surfaces
 
-- Adaptive selection for full WebGL, cinematic image motion, and static image tiers.
-- WebGL context loss and automatic downgrade.
-- Runtime performance-decline downgrade.
-- Reduced-motion static tier with zero Canvas.
-- Capable mobile and desktop WebGL activation.
-- Hidden-tab render-loop pause logic.
-- Intro, theme persistence, mobile navigation, collection, detail, compare, forms, admin CRUD, status persistence, and static-route regression coverage.
-- Console errors, horizontal overflow, static export, and direct homepage refresh.
+- Typography: Estedad and Manrope remain consistent; display, navigation, metadata and action labels have distinct weights and spacing. Persian RTL and Latin counters stay aligned at all checked sizes.
+- Spacing/layout: the rounded image frame, embedded capsule header, left vertical rail, fixed desktop showroom card and layered destination deck reproduce the main reference hierarchy. Mobile reduces the header and shows one primary card plus a visible stacked successor.
+- Colors/tokens: light uses warm ivory, pearl white and graphite with a small champagne active mark. Dark uses obsidian/graphite, ivory and the same restrained accent. Both retain readable contrast.
+- Image quality: responsive AVIF/WebP versions of the supplied car image remain the only hero imagery. The crop keeps the vehicle as the central subject without generated replacements.
+- Copy/icons: each route has a Phosphor icon, numbered state, short factual detail and circular CTA. Contact rows use phone/location/social icons. Promotional filler and duplicate footer data remain absent.
+- Motion/accessibility: wheel, touch, buttons, PageUp/PageDown, arrows and browser history select the same independent cards. Inactive cards are inert; reduced motion removes spatial movement; controls preserve 44px targets and visible focus.
 
-## Implementation checklist
+## Verification
 
-- [x] Lazy-loaded R3F/Three/Drei chunk
-- [x] Non-critical, semantic HTML and image outside Canvas
-- [x] Full/cinematic/static quality selection
-- [x] Save-Data, reduced-motion, weak-device, no-WebGL fallbacks
-- [x] Error boundary and context-loss recovery
-- [x] Runtime performance downgrade
-- [x] Hidden-tab pause and DPR clamp
-- [x] Mobile, desktop, dark/light and static export verification
-- [x] No fabricated vehicle model
+- `scripts/capture-home-qa.mjs`: 28 states, zero automated layout/hit-target/page-error failures.
+- Full browser suite: 48 passed and 8 intentional device-specific skips. The home scenarios passed for wheel, touch, URL/history, reduced motion and fixed viewport behavior. Unit/component suite: 65 passed. Build, TypeScript, lint and static export passed during the revision.
+- The Codex in-app browser could not initialize because its kernel-assets path was missing. Visual inspection used the captured Chrome output instead. This blocks the Product Design skill's preferred in-app-browser handoff even though the implementation and fallback browser verification pass.
 
-## Open questions and limitations
+## Remaining P3
 
-- A true vehicle-model experience remains intentionally deferred until AutoSafir supplies or authorizes an accurate model and texture set. Phase 10 uses an architectural depth aperture instead of misrepresenting a real vehicle.
-- Figma authentication succeeded, but the connected Starter/View account has reached its MCP call limit and the native Figma surface is unavailable to this task. Existing AutoSafir Figma tokens/state were used; no Figma edit is claimed.
-- `npm audit` still reports four pre-existing dependency findings: one moderate and three high. No forced major-version audit rewrite was applied during this visual phase.
+- A wider authorized source photo would reduce the tight desktop crop.
+- Physical iPhone Safari verification remains outstanding.
 
-final result: passed
+final result: blocked

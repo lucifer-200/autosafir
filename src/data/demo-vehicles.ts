@@ -1,4 +1,4 @@
-import type { Vehicle } from "@/types/vehicle";
+import type { Vehicle, VehicleMedia } from "@/types/vehicle";
 
 export const LEGACY_PLACEHOLDER_VEHICLES = [
   {
@@ -15,14 +15,36 @@ export const LEGACY_PLACEHOLDER_VEHICLES = [
   },
 ] as const;
 
+/** Official 6-car snapshot that lacked photos; replace on hydrate. */
+export const STALE_OFFICIAL_SEED_IDS = [
+  "11000000-0000-4000-8000-000000000001",
+  "11000000-0000-4000-8000-000000000002",
+  "11000000-0000-4000-8000-000000000003",
+  "11000000-0000-4000-8000-000000000004",
+  "11000000-0000-4000-8000-000000000005",
+  "11000000-0000-4000-8000-000000000006",
+] as const;
+
 const advisor = {
   name: "مهابادی",
   phone: "09122222346",
 } as const;
 
+function photo(
+  id: string,
+  slug: string,
+  alt: string,
+): VehicleMedia {
+  return {
+    id,
+    type: "IMAGE",
+    src: `/cars/${slug}/01.jpg`,
+    alt,
+  };
+}
+
 // Snapshot of public AutoSafir sales posts captured on 2026-09-14.
-// Only fields stated in the linked post are populated. Public media is not copied
-// into the demo until AutoSafir grants asset permission.
+// Only caption facts plus exterior color visible in the official photo are stored.
 export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
   {
     id: "11000000-0000-4000-8000-000000000001",
@@ -31,6 +53,7 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     model: "Tiguan",
     year: 2018,
     mileage: 40_000,
+    exteriorColor: "سفید",
     features: [
       "کیلس استارت",
       "فرمان D-Cut",
@@ -47,7 +70,13 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     ],
     description:
       "تیگوان مدل ۲۰۱۸ با ۴۰ هزار کیلومتر کارکرد و امکانات ثبت‌شده در پست رسمی اتو سفیر. برای موجودی روز، پیش از مراجعه تماس بگیرید.",
-    media: [],
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000001",
+        "volkswagen-tiguan-2018",
+        "Volkswagen Tiguan سفید مدل ۲۰۱۸ در نمایشگاه اتو سفیر",
+      ),
+    ],
     status: "AVAILABLE",
     advisor,
     instagramUrl: "https://www.instagram.com/autosafirgallery/p/Dc0EIIlDPju/",
@@ -61,6 +90,7 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     trim: "Convertible · M Kit",
     year: 2015,
     mileage: 77_000,
+    exteriorColor: "خاکستری تیره",
     features: [
       "دو کلید",
       "سیستم صوتی Harman Kardon",
@@ -74,7 +104,13 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     ],
     description:
       "BMW 428 کروک مدل ۲۰۱۵ با ۷۷ هزار کیلومتر کارکرد و کیت M. برای موجودی روز، پیش از مراجعه تماس بگیرید.",
-    media: [],
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000002",
+        "bmw-428-convertible-2015",
+        "BMW 428 کروک خاکستری تیره مدل ۲۰۱۵ در نمایشگاه اتو سفیر",
+      ),
+    ],
     status: "AVAILABLE",
     advisor,
     instagramUrl: "https://www.instagram.com/autosafirgallery/p/Dcxi0GEjP_x/",
@@ -88,6 +124,7 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     trim: "Japan · Hybrid",
     year: 2026,
     mileage: 0,
+    exteriorColor: "سفید",
     fuelType: "هیبرید",
     features: [
       "نسخه ژاپن",
@@ -109,7 +146,13 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     ],
     description:
       "RAV4 هیبرید نسخه ژاپن، مدل ۲۰۲۶ و صفر کیلومتر با امکانات ثبت‌شده در پست رسمی اتو سفیر. برای موجودی روز تماس بگیرید.",
-    media: [],
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000003",
+        "toyota-rav4-hybrid-2026",
+        "Toyota RAV4 هیبرید سفید مدل ۲۰۲۶ در نمایشگاه اتو سفیر",
+      ),
+    ],
     status: "AVAILABLE",
     advisor,
     instagramUrl: "https://www.instagram.com/autosafirgallery/p/Dcu6iXHDBTW/",
@@ -122,10 +165,17 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     model: "Land Cruiser 70",
     year: 2026,
     mileage: 0,
+    exteriorColor: "دورنگ سفید و مشکی",
     features: [],
     description:
       "تویوتا سری ۷۰ مدل ۲۰۲۶ و صفر کیلومتر. جزئیات فنی بیشتری در منبع عمومی ذکر نشده است.",
-    media: [],
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000004",
+        "toyota-land-cruiser-70-2026",
+        "Toyota Land Cruiser 70 دورنگ سفید و مشکی مدل ۲۰۲۶ در نمایشگاه اتو سفیر",
+      ),
+    ],
     status: "AVAILABLE",
     advisor,
     instagramUrl: "https://www.instagram.com/autosafirgallery/p/DcsVxhBDJt8/",
@@ -138,12 +188,19 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     model: "Pajero",
     year: 2022,
     mileage: 52_000,
+    exteriorColor: "سفید",
     engine: "۶ سیلندر",
     condition: "بدون رنگ",
     features: [],
     description:
       "پاجرو مدل ۲۰۲۲، شش سیلندر، بدون رنگ و با ۵۲ هزار کیلومتر کارکرد. برای موجودی روز، پیش از مراجعه تماس بگیرید.",
-    media: [],
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000005",
+        "mitsubishi-pajero-2022",
+        "Mitsubishi Pajero سفید مدل ۲۰۲۲ در نمایشگاه اتو سفیر",
+      ),
+    ],
     status: "AVAILABLE",
     advisor,
     instagramUrl: "https://www.instagram.com/autosafirgallery/p/DcnMOQ3DJee/",
@@ -157,6 +214,7 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     trim: "VXR · Limited",
     year: 2024,
     mileage: 8_000,
+    exteriorColor: "سفید",
     engine: "Twin Turbo",
     features: [
       "کیلس استارت",
@@ -178,10 +236,323 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     ],
     description:
       "لندکروز اتاق ۳۰۰، VXR Limited مدل ۲۰۲۴ با ۸ هزار کیلومتر کارکرد و پیشرانه Twin Turbo. برای موجودی روز تماس بگیرید.",
-    media: [],
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000006",
+        "toyota-land-cruiser-300-vxr-2024",
+        "Toyota Land Cruiser 300 VXR سفید مدل ۲۰۲۴ در نمایشگاه اتو سفیر",
+      ),
+    ],
     status: "AVAILABLE",
     advisor,
     instagramUrl: "https://www.instagram.com/autosafirgallery/p/DcfxOEjjP4e/",
     createdAt: "2026-08-25T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000007",
+    slug: "mercedes-benz-cls-350-2022",
+    brand: "Mercedes-Benz",
+    model: "CLS 350",
+    year: 2022,
+    mileage: 5_000,
+    exteriorColor: "سفید",
+    features: [
+      "کیلس استارت",
+      "سیستم صوتی Burmester",
+      "ترمز پارک برقی",
+      "صندلی‌های جلو برقی",
+      "مموری صندلی",
+      "گرم‌کن صندلی",
+      "پرده عقب برقی",
+      "هدآپ دیسپلی",
+      "فرمان D-Cut",
+      "سنسور پارک",
+      "اتو استارت‌استاپ",
+      "سانروف",
+      "کلاستر دیجیتال",
+    ],
+    description:
+      "بنز CLS ۳۵۰ مدل ۲۰۲۲ با ۵ هزار کیلومتر کارکرد و امکانات ثبت‌شده در پست رسمی اتو سفیر. برای موجودی روز تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000007",
+        "mercedes-benz-cls-350-2022",
+        "Mercedes-Benz CLS 350 سفید مدل ۲۰۲۲ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/DcX60Z6jF3r/",
+    createdAt: "2026-08-23T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000008",
+    slug: "lexus-is-300-2025",
+    brand: "Lexus",
+    model: "IS 300",
+    year: 2025,
+    mileage: 0,
+    exteriorColor: "سفید",
+    features: [
+      "کیلس استارت",
+      "دوربین ۳۶۰ درجه",
+      "گرم‌کن و سردکن صندلی‌ها",
+      "گرم‌کن فرمان",
+      "سیستم صوتی Mark Levinson",
+      "مموری صندلی",
+      "سانروف",
+      "اتوهلد",
+      "حالت‌های رانندگی",
+      "ESP",
+    ],
+    description:
+      "لکسوس IS ۳۰۰ مدل ۲۰۲۵ و صفر کیلومتر با امکانات ثبت‌شده در پست رسمی اتو سفیر. برای موجودی روز تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000008",
+        "lexus-is-300-2025",
+        "Lexus IS 300 سفید مدل ۲۰۲۵ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/DcVKkAZDGd6/",
+    createdAt: "2026-08-22T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000009",
+    slug: "toyota-supra-2026",
+    brand: "Toyota",
+    model: "Supra",
+    year: 2026,
+    mileage: 0,
+    exteriorColor: "مشکی",
+    plateType: "پلاک ملی",
+    features: [
+      "کیلس استارت",
+      "کیت GR فابریک",
+      "صندلی‌های برقی",
+      "مموری صندلی",
+      "ترمز پارک برقی",
+      "اتوهلد",
+      "سیستم صوتی JBL",
+      "دکمه Sport",
+      "اتو استارت‌استاپ",
+      "ESP",
+      "تریم کربن",
+    ],
+    description:
+      "تویوتا سوپرا مدل ۲۰۲۶، صفر کیلومتر و پلاک ملی با کیت GR فابریک. برای موجودی روز تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000009",
+        "toyota-supra-2026",
+        "Toyota Supra مشکی مدل ۲۰۲۶ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/DcDMbQ2jCDo/",
+    createdAt: "2026-08-16T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000010",
+    slug: "voyah-free-2025",
+    brand: "Voyah",
+    model: "Free",
+    year: 2025,
+    mileage: 0,
+    exteriorColor: "مشکی",
+    features: [
+      "۵ حالت رانندگی",
+      "کروز هوشمند",
+      "رادارها کامل",
+      "تنظیم ارتفاع",
+      "گرم‌کن و سردکن",
+      "۶۴ حالت نورپردازی",
+      "فرمان D-Cut",
+      "سقف پانوراما",
+      "سیستم صوتی Dynaudio",
+      "دو مانیتور ۱۲.۳ اینچی",
+      "دوربین ۳۶۰ درجه",
+      "دوربین ثبت وقایع",
+      "صندلی ۸ حالته",
+      "۶ کیسه هوا",
+      "ماساژور",
+      "شارژر بی‌سیم",
+      "شیشه جلو عایق صدا",
+    ],
+    description:
+      "وویا فری مدل ۲۰۲۵ و صفر کیلومتر با امکانات ثبت‌شده در پست رسمی اتو سفیر. برای موجودی روز تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000010",
+        "voyah-free-2025",
+        "Voyah Free مشکی مدل ۲۰۲۵ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/DbxHhxODDH7/",
+    createdAt: "2026-08-10T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000011",
+    slug: "bmw-530-2018",
+    brand: "BMW",
+    model: "530",
+    year: 2018,
+    mileage: 0,
+    exteriorColor: "سفید",
+    features: [
+      "کیلس استارت",
+      "ترمز پارک برقی",
+      "اتوهلد",
+      "مانیتور پشت صندلی فابریک",
+      "سیستم صوتی Harman",
+      "هدآپ دیسپلی",
+      "صندلی دایموند کات",
+      "ESP",
+      "مموری صندلی",
+      "صندلی‌های ردیف جلو برقی",
+    ],
+    description:
+      "BMW ۵۳۰ مدل ۲۰۱۸ و صفر کیلومتر با امکانات ثبت‌شده در پست رسمی اتو سفیر. برای موجودی روز تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000011",
+        "bmw-530-2018",
+        "BMW 530 سفید مدل ۲۰۱۸ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/Dbr92-yjO-0/",
+    createdAt: "2026-08-08T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000012",
+    slug: "mercedes-benz-c-200-long-2025",
+    brand: "Mercedes-Benz",
+    model: "C 200",
+    trim: "Long",
+    year: 2025,
+    mileage: 12_000,
+    exteriorColor: "سرمه‌ای",
+    features: [
+      "کیلس استارت",
+      "صندلی جلو برقی",
+      "سیستم صوتی Burmester",
+      "سانروف",
+      "فرمان D-Cut",
+      "اتو استارت‌استاپ",
+      "ترمز پارک برقی",
+      "دوربین ۳۶۰ درجه",
+      "مموری صندلی جلو",
+      "چراغ جلو LED High Performance",
+    ],
+    description:
+      "بنز C ۲۰۰ لانگ مدل ۲۰۲۵ با ۱۲ هزار کیلومتر کارکرد. برای موجودی روز، پیش از مراجعه تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000012",
+        "mercedes-benz-c-200-long-2025",
+        "Mercedes-Benz C 200 Long سرمه‌ای مدل ۲۰۲۵ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/DbphhYADMtQ/",
+    createdAt: "2026-08-07T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000013",
+    slug: "byd-destroyer-05-2025",
+    brand: "BYD",
+    model: "Destroyer 05",
+    year: 2025,
+    mileage: 0,
+    exteriorColor: "سفید",
+    features: [
+      "کیلس استارت",
+      "سانروف",
+      "صندلی‌های تمام‌چرم",
+      "ترمز پارک برقی",
+      "اتوهلد",
+      "فرمان D-Cut",
+      "مانیتور بزرگ",
+      "کلاستر دیجیتال",
+    ],
+    description:
+      "بی‌وای‌دی دیسترویر ۰۵ مدل ۲۰۲۵ و صفر کیلومتر. برای موجودی روز تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000013",
+        "byd-destroyer-05-2025",
+        "BYD Destroyer 05 سفید مدل ۲۰۲۵ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/DcagX5ZDPQl/",
+    createdAt: "2026-08-24T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000014",
+    slug: "byd-qin-plus-2025",
+    brand: "BYD",
+    model: "Qin Plus",
+    year: 2025,
+    mileage: 0,
+    exteriorColor: "سفید",
+    fuelType: "پلاگین هیبرید",
+    features: ["تحویل فوری"],
+    description:
+      "بی‌وای‌دی چین پلاس مدل ۲۰۲۵، صفر کیلومتر و پلاگین هیبرید. برای موجودی روز تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000014",
+        "byd-qin-plus-2025",
+        "BYD Qin Plus سفید مدل ۲۰۲۵ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/DbfF6zhjJ7P/",
+    createdAt: "2026-08-04T00:00:00.000Z",
+  },
+  {
+    id: "11000000-0000-4000-8000-000000000015",
+    slug: "toyota-bz3x-2025",
+    brand: "Toyota",
+    model: "bZ3X",
+    year: 2025,
+    mileage: 0,
+    exteriorColor: "خاکستری",
+    features: [
+      "کیلس استارت",
+      "دستگیره درب مخفی‌شونده",
+      "سقف پانوراما",
+      "میز بار صندلی عقب",
+      "صندلی‌های تمام‌چرم",
+      "صندلی‌های جلو برقی",
+      "درب صندوق برقی",
+      "سیستم صوتی Yamaha",
+      "کلاستر دیجیتال",
+      "شارژر بی‌سیم",
+    ],
+    description:
+      "تویوتا bZ3X مدل ۲۰۲۵ و صفر کیلومتر با امکانات ثبت‌شده در پست رسمی اتو سفیر. برای موجودی روز تماس بگیرید.",
+    media: [
+      photo(
+        "21000000-0000-4000-8000-000000000015",
+        "toyota-bz3x-2025",
+        "Toyota bZ3X خاکستری مدل ۲۰۲۵ در نمایشگاه اتو سفیر",
+      ),
+    ],
+    status: "AVAILABLE",
+    advisor,
+    instagramUrl: "https://www.instagram.com/autosafirgallery/p/DbVBMImDK8e/",
+    createdAt: "2026-08-01T00:00:00.000Z",
   },
 ]);

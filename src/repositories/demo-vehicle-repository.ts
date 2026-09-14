@@ -1,6 +1,7 @@
 import {
   DEMO_VEHICLE_SEED,
   LEGACY_PLACEHOLDER_VEHICLES,
+  STALE_OFFICIAL_SEED_IDS,
 } from "@/data/demo-vehicles";
 import {
   createPersistedData,
@@ -66,6 +67,19 @@ export function isLegacyPlaceholderSeed(vehicles: readonly Vehicle[]): boolean {
       ),
     )
   );
+}
+
+export function isStaleOfficialSeed(vehicles: readonly Vehicle[]): boolean {
+  return (
+    vehicles.length === STALE_OFFICIAL_SEED_IDS.length &&
+    STALE_OFFICIAL_SEED_IDS.every((id) =>
+      vehicles.some((vehicle) => vehicle.id === id),
+    )
+  );
+}
+
+function shouldReplaceOfficialSeed(vehicles: readonly Vehicle[]): boolean {
+  return isLegacyPlaceholderSeed(vehicles) || isStaleOfficialSeed(vehicles);
 }
 
 export function slugifyVehicle(
@@ -295,7 +309,7 @@ export class DemoVehicleRepository implements VehicleRepository {
       const persisted = parseAndMigratePersistedData(
         JSON.parse(stored) as unknown,
       );
-      this.data = isLegacyPlaceholderSeed(persisted.vehicles)
+      this.data = shouldReplaceOfficialSeed(persisted.vehicles)
         ? createPersistedData(this.seed, persisted.revision + 1)
         : persisted;
       this.persist(false);

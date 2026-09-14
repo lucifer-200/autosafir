@@ -5,6 +5,7 @@ import {
   createUniqueSlug,
   DemoVehicleRepository,
   isLegacyPlaceholderSeed,
+  isStaleOfficialSeed,
   slugifyVehicle,
   type StorageLike,
 } from "@/repositories/demo-vehicle-repository";
@@ -160,6 +161,29 @@ describe("DemoVehicleRepository", () => {
 
     expect(
       isLegacyPlaceholderSeed([...legacyVehicles, DEMO_VEHICLE_SEED[0]]),
+    ).toBe(false);
+  });
+
+  it("replaces the photo-less official six-car snapshot", async () => {
+    const staleVehicles = DEMO_VEHICLE_SEED.slice(0, 6).map((vehicle) => ({
+      ...vehicle,
+      media: [],
+    }));
+    storage.setItem(
+      VEHICLE_STORAGE_KEY,
+      JSON.stringify({ version: 1, revision: 2, vehicles: staleVehicles }),
+    );
+
+    const repository = makeRepository();
+    const snapshot = await repository.getSnapshot();
+
+    expect(isStaleOfficialSeed(staleVehicles)).toBe(true);
+    expect(snapshot.vehicles).toEqual(DEMO_VEHICLE_SEED);
+    expect(
+      JSON.parse(storage.getItem(VEHICLE_STORAGE_KEY) ?? "").revision,
+    ).toBe(3);
+    expect(
+      isStaleOfficialSeed([...staleVehicles, DEMO_VEHICLE_SEED[6]]),
     ).toBe(false);
   });
 

@@ -1,0 +1,23 @@
+{
+  "profile": "Chrome, 390x844, cold cache, 1.6Mbps / 150ms RTT, CPU 4x",
+  "runs": [
+    {
+      "lcp": 12788,
+      "cls": 0,
+      "jsBytes": 519605,
+      "imageBytes": 3542748
+    },
+    {
+      "lcp": 12832,
+      "cls": 0,
+      "jsBytes": 519605,
+      "imageBytes": 3542748
+    },
+    {
+      "lcp": 12756,
+      "cls": 0,
+      "jsBytes": 519605,
+      "imageBytes": 3542748
+    }
+  ]
+}

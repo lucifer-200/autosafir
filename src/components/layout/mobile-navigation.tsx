@@ -18,7 +18,11 @@ import {
 const focusableSelector =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-export function MobileNavigation() {
+export function MobileNavigation({
+  alwaysVisible = false,
+}: {
+  alwaysVisible?: boolean;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const dialogId = useId();
@@ -68,7 +72,7 @@ export function MobileNavigation() {
       <button
         ref={triggerRef}
         type="button"
-        className="touch-target inline-flex items-center justify-center text-current lg:hidden"
+        className={`touch-target items-center justify-center text-current ${alwaysVisible ? "inline-flex" : "inline-flex lg:hidden"}`}
         aria-label="باز کردن منوی اصلی"
         aria-expanded={isOpen}
         aria-controls={dialogId}
@@ -96,7 +100,7 @@ export function MobileNavigation() {
           >
             <div className="mobile-menu__image" aria-hidden="true">
               <Image
-                src="/images/navigation/showroom-portrait.png"
+                src="/images/home/showroom-mobile-480.webp"
                 alt=""
                 fill
                 priority

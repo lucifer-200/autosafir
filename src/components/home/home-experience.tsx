@@ -1,168 +1,279 @@
 "use client";
 
-import { ArrowDown, ArrowLeft } from "@phosphor-icons/react";
+import {
+  ArrowDown,
+  ArrowUp,
+  ArrowUpLeft,
+  CalendarBlank,
+  CaretDown,
+  CarProfile,
+  Scales,
+  MapPin,
+  Sparkle,
+} from "@phosphor-icons/react";
 import Link from "next/link";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
-
-import { SafirIntro } from "@/components/animation/safir-intro";
-import { ScrollChoreography } from "@/components/animation/scroll-choreography";
-import { SmoothScroll } from "@/components/animation/smooth-scroll";
-import { AdaptiveHeroMedia } from "@/components/three/adaptive-hero-media";
-import { resolveIntroMode, type IntroMode } from "@/lib/motion-preferences";
-import { useVehicleStore } from "@/stores/vehicle-store";
+import { AkhWordmark } from "@/components/branding/akh-wordmark";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { HOME_SCENES } from "@/lib/home-navigation";
+import { ShowroomCard } from "./showroom-card";
+import { useHomeNavigation } from "./use-home-navigation";
 
 const chapters = [
   {
-    index: "01",
+    id: "collection",
     title: "موجودی امروز",
-    body: "خودروهای موجود و رزروشده را با اطلاعات روشن و بدون قیمت عمومی مرور کنید.",
+    english: "THE COLLECTION",
     href: "/collection",
-    action: "مشاهده مجموعه",
+    action: "مشاهده خودروها",
+    icon: CarProfile,
+    detail: "خودروهای منتخب و آماده بازدید",
   },
   {
-    index: "02",
-    title: "مقایسه دقیق",
-    body: "دو یا سه خودرو را کنار هم بگذارید و تفاوت‌های واقعی مشخصات را آرام بررسی کنید.",
+    id: "compare",
+    title: "مقایسه",
+    english: "SIDE BY SIDE",
     href: "/compare",
-    action: "شروع مقایسه",
+    action: "انتخاب خودروها",
+    icon: Scales,
+    detail: "مقایسه هم‌زمان تا سه انتخاب",
   },
   {
-    index: "03",
+    id: "book-visit",
     title: "بازدید حضوری",
-    body: "خودرو را انتخاب کنید و برای هماهنگی واقعی مستقیماً با اتو سفیر تماس بگیرید.",
+    english: "YOUR VISIT",
     href: "/book-visit",
-    action: "رزرو نمایشی بازدید",
+    action: "هماهنگی بازدید",
+    icon: CalendarBlank,
+    detail: "هماهنگی سریع با شعب اتو سفیر",
+  },
+] as const;
+
+const headerLinks = [
+  { href: "/branches", eyebrow: "موقعیت", label: "شعب اتو سفیر", icon: MapPin },
+  {
+    href: "/collection",
+    eyebrow: "نوع خودرو",
+    label: "موجودی",
+    icon: CarProfile,
+  },
+  { href: "/compare", eyebrow: "انتخاب", label: "مقایسه", icon: Scales },
+  {
+    href: "/book-visit",
+    eyebrow: "قرار ملاقات",
+    label: "رزرو بازدید",
+    icon: CalendarBlank,
   },
 ] as const;
 
 export function HomeExperience() {
-  const [introDismissed, setIntroDismissed] = useState(false);
-  const isClient = useSyncExternalStore(
-    () => () => undefined,
-    () => true,
-    () => false,
-  );
-  const introMode: IntroMode | null = introDismissed
-    ? "skip"
-    : isClient
-      ? resolveIntroMode()
-      : null;
-  const vehicles = useVehicleStore((state) => state.vehicles);
-  const hydrated = useVehicleStore((state) => state.hydrated);
-  const hydrate = useVehicleStore((state) => state.hydrate);
-
-  useEffect(() => {
-    if (!hydrated) void hydrate();
-  }, [hydrate, hydrated]);
-
-  const counts = useMemo(
-    () => ({
-      available: vehicles.filter((vehicle) => vehicle.status === "AVAILABLE")
-        .length,
-      reserved: vehicles.filter((vehicle) => vehicle.status === "RESERVED")
-        .length,
-      sold: vehicles.filter((vehicle) => vehicle.status === "SOLD").length,
-    }),
-    [vehicles],
-  );
-
+  const { rootRef, scene, panelScene, mobile, select, step } =
+    useHomeNavigation();
+  const activeIndex = HOME_SCENES.indexOf(panelScene);
+  const controls = [
+    ...chapters.map(({ id, title }) => ({ id, title })),
+    ...(mobile ? [{ id: "showroom" as const, title: "اطلاعات فروشگاه" }] : []),
+  ];
   return (
-    <main id="main-content" className="luxury-home">
-      {introMode && introMode !== "skip" ? (
-        <SafirIntro
-          mode={introMode}
-          onComplete={() => setIntroDismissed(true)}
-        />
-      ) : null}
-      <SmoothScroll>
-        <ScrollChoreography>
-          <section
-            className="luxury-hero"
-            aria-labelledby="luxury-home-heading"
+    <main
+      ref={rootRef}
+      id="main-content"
+      className="showroom-home"
+      tabIndex={-1}
+      data-active-scene={scene}
+    >
+      <section className="showroom-frame" aria-label="نمایشگاه اتو سفیر">
+        <header className="showroom-header">
+          <svg
+            className="showroom-header__shape"
+            viewBox="0 0 1000 68"
+            preserveAspectRatio="none"
+            aria-hidden="true"
           >
-            <AdaptiveHeroMedia />
-            <div className="luxury-hero__content">
-              <p className="font-technical" dir="ltr">
-                AUTOSAFIR · PRIVATE VIEWING
-              </p>
-              <h1 id="luxury-home-heading">اتو سفیر</h1>
-              <p className="luxury-hero__lead">
-                نمایشگاه دیجیتال برای انتخابی آرام‌تر؛ خودرو، جزئیات و مسیر
-                بازدید در یک قاب دقیق.
-              </p>
-              <div className="luxury-hero__actions">
-                <Link href="/collection" prefetch={false}>
-                  مشاهده خودروها <ArrowLeft aria-hidden="true" />
-                </Link>
-                <Link href="/collection" prefetch={false} className="is-quiet">
-                  موجودی امروز
-                </Link>
-              </div>
-              <a href="#home-ledger" className="luxury-hero__scroll">
-                <ArrowDown aria-hidden="true" /> ادامه
-              </a>
-            </div>
-          </section>
-
-          <section
-            id="home-ledger"
-            className="home-ledger"
-            aria-labelledby="home-ledger-heading"
-          >
-            <header data-reveal>
-              <p className="font-technical" dir="ltr">
-                A QUIET JOURNEY
-              </p>
-              <h2 id="home-ledger-heading">سه مسیر، یک انتخاب سنجیده</h2>
-            </header>
-            <div className="home-ledger__rows">
-              {chapters.map((chapter) => (
-                <article key={chapter.index} data-reveal>
-                  <span className="home-ledger__index font-technical">
-                    {chapter.index}
+            <path d="M160 0H840C805 0 805 64 750 64H250C195 64 195 0 160 0Z" />
+          </svg>
+          <nav aria-label="ناوبری اصلی صفحه خانه">
+            {headerLinks.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link key={item.href} href={item.href} prefetch={false}>
+                  <Icon
+                    className="showroom-header__icon"
+                    size={15}
+                    weight="light"
+                    aria-hidden="true"
+                  />
+                  <span className="showroom-header__copy">
+                    <small>{item.eyebrow}</small>
+                    <strong>{item.label}</strong>
                   </span>
-                  <div>
-                    <h3>{chapter.title}</h3>
-                    <p>{chapter.body}</p>
+                  <CaretDown
+                    className="showroom-header__caret"
+                    size={11}
+                    aria-hidden="true"
+                  />
+                </Link>
+              );
+            })}
+          </nav>
+        </header>
+        <div className="showroom-backdrop">
+          <picture>
+            <source
+              media="(min-width: 1024px)"
+              type="image/avif"
+              srcSet="/images/home/showroom-desktop.avif"
+            />
+            <source
+              media="(min-width: 1024px)"
+              type="image/webp"
+              srcSet="/images/home/showroom-desktop.webp"
+            />
+            <source
+              type="image/avif"
+              srcSet="/images/home/showroom-mobile-480.avif 480w, /images/home/showroom-mobile-768.avif 768w"
+              sizes="100vw"
+            />
+            <img
+              src="/images/home/showroom-mobile-768.webp"
+              srcSet="/images/home/showroom-mobile-480.webp 480w, /images/home/showroom-mobile-768.webp 768w"
+              sizes="100vw"
+              alt="تصویر مفهومی خودروی لوکس در فضای معماری گرم"
+              fetchPriority="high"
+              width={853}
+              height={1844}
+            />
+          </picture>
+        </div>
+        <div className="showroom-title">
+          <span className="font-technical" dir="ltr">
+            AUTO SAFIR
+          </span>
+          <h1>اتو سفیر</h1>
+        </div>
+        <aside className="showroom-tools" aria-label="تنظیمات نمایش">
+          <ThemeToggle variant="icon" />
+          <button
+            type="button"
+            className="showroom-contact-trigger"
+            aria-label="نمایش اطلاعات فروشگاه"
+            aria-pressed={scene === "showroom"}
+            onClick={() =>
+              select(scene === "showroom" ? "collection" : "showroom")
+            }
+          >
+            <MapPin size={21} aria-hidden="true" />
+          </button>
+        </aside>
+        <div
+          className="showroom-contact-slot"
+          data-highlight={scene === "showroom" || undefined}
+        >
+          <ShowroomCard />
+        </div>
+        <div className="showroom-route-slot">
+          <div className="showroom-deck">
+            {chapters.map((chapter, index) => {
+              const Icon = chapter.icon;
+              const active = panelScene === chapter.id;
+              const position = active
+                ? "active"
+                : index === activeIndex + 1
+                  ? "next"
+                  : "hidden";
+              return (
+                <article
+                  key={chapter.id}
+                  data-scene={chapter.id}
+                  data-active={active}
+                  data-position={position}
+                  inert={!active}
+                  aria-hidden={!active}
+                  className="showroom-route-card"
+                  aria-label={chapter.title}
+                >
+                  <div className="showroom-route-top">
+                    <Icon size={28} weight="light" aria-hidden="true" />
+                    <span className="font-technical" dir="ltr">
+                      0{index + 1} / 03
+                    </span>
                   </div>
-                  <Link
-                    href={chapter.href}
-                    prefetch={false}
-                    aria-label={`${chapter.action}: ${chapter.title}`}
-                  >
-                    <ArrowLeft aria-hidden="true" />
-                  </Link>
+                  <div className="showroom-route-copy">
+                    <p className="font-technical" dir="ltr">
+                      {chapter.english}
+                    </p>
+                    <h2>{chapter.title}</h2>
+                    <div className="showroom-route-detail">
+                      <Sparkle size={16} weight="fill" aria-hidden="true" />
+                      <span>{chapter.detail}</span>
+                    </div>
+                    <Link
+                      href={chapter.href}
+                      prefetch={false}
+                      className="showroom-route-link"
+                    >
+                      {chapter.action}
+                      <ArrowUpLeft size={22} aria-hidden="true" />
+                    </Link>
+                  </div>
                 </article>
+              );
+            })}
+            <div
+              data-scene="showroom"
+              data-active={panelScene === "showroom"}
+              inert={panelScene !== "showroom"}
+              aria-hidden={panelScene !== "showroom"}
+              className="showroom-mobile-contact"
+            >
+              <ShowroomCard />
+            </div>
+          </div>
+          <nav className="showroom-chapter-controls" aria-label="انتخاب کارت">
+            <button
+              type="button"
+              aria-label="کارت قبلی"
+              disabled={activeIndex === 0}
+              onClick={() => step(-1)}
+            >
+              <ArrowUp size={18} aria-hidden="true" />
+            </button>
+            <div className="showroom-dots">
+              {controls.map((item) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  aria-label={`نمایش ${item.title}`}
+                  aria-pressed={panelScene === item.id}
+                  onClick={() => select(item.id)}
+                >
+                  <span />
+                </button>
               ))}
             </div>
-          </section>
-
-          <section
-            className="home-inventory"
-            aria-label="خلاصه موجودی نمایشی"
-            data-reveal
-          >
-            <p>وضعیت مجموعه روی همین دستگاه</p>
-            <dl>
-              <div>
-                <dt>موجود</dt>
-                <dd>{hydrated ? counts.available : "—"}</dd>
-              </div>
-              <div>
-                <dt>رزرو</dt>
-                <dd>{hydrated ? counts.reserved : "—"}</dd>
-              </div>
-              <div>
-                <dt>فروخته‌شده</dt>
-                <dd>{hydrated ? counts.sold : "—"}</dd>
-              </div>
-            </dl>
-            <Link href="/collection" prefetch={false}>
-              ورود به مجموعه
-            </Link>
-          </section>
-        </ScrollChoreography>
-      </SmoothScroll>
+            <button
+              type="button"
+              aria-label="کارت بعدی"
+              disabled={activeIndex === controls.length - 1}
+              onClick={() => step(1)}
+            >
+              <ArrowDown size={18} aria-hidden="true" />
+            </button>
+          </nav>
+          <p className="sr-only" aria-live="polite" aria-atomic="true">
+            {panelScene === "showroom"
+              ? "اطلاعات فروشگاه"
+              : chapters[activeIndex].title}
+          </p>
+        </div>
+        <span className="showroom-image-note">تصویر مفهومی</span>
+      </section>
+      <div className="showroom-colophon">
+        <span>نسخهٔ نمایشی</span>
+        <a href="https://akhavan.dev" aria-label="Developed by AKH" dir="ltr">
+          <span>Developed by</span>
+          <AkhWordmark />
+        </a>
+      </div>
     </main>
   );
 }

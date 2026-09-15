@@ -1,0 +1,78 @@
+.home-cinematic {
+  --home-panel: rgba(246, 241, 232, 0.94);
+  --home-panel-ink: #171512;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+:root[data-theme="dark"] .home-cinematic {
+  --home-ink: #f3eee4;
+  --home-paper: #0c0c0b;
+  --home-panel: rgba(22, 21, 18, 0.92);
+  --home-panel-ink: #f4eee3;
+  background: #0c0c0b;
+}
+
+:root[data-theme="dark"] .home-architecture {
+  opacity: 0.16;
+  filter: grayscale(1);
+}
+
+:root[data-theme="dark"] .home-hero__masthead {
+  color: #f4eee3;
+}
+
+.home-hero {
+  padding-bottom: 130px;
+}
+
+.home-hero__copy h1,
+.home-section-heading h2,
+.home-showroom-card h2,
+.home-manifesto h2,
+.home-compare h2,
+.home-contact-finale h2,
+.home-vehicle-card h3,
+.home-branch-grid h3 {
+  letter-spacing: 0;
+}
+
+.home-hero__footer-notes span:last-child {
+  letter-spacing: 0;
+}
+
+.home-header {
+  color: var(--home-ink);
+  background: var(--home-paper);
+}
+
+.home-theme-control,
+.home-mobile-dock {
+  color: var(--home-panel-ink);
+  background: var(--home-panel);
+}
+
+.home-theme-control button > span[data-active] {
+  color: #8b672e;
+}
+
+:root[data-theme="dark"] .home-theme-control button > span[data-active] {
+  color: #e5ca91;
+  background: rgba(12, 11, 9, 0.9);
+}
+
+.home-showroom-card {
+  overflow: hidden;
+  color: var(--home-panel-ink);
+  background: var(--home-panel);
+}
+
+.home-showroom-card__branches p,
+.home-showroom-card__branches small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.home-mobile-dock a {
+  color: var(--home-panel-ink);
+}

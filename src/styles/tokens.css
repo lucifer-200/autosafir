@@ -1,26 +1,4 @@
 :root,
-:root[data-theme="dark"] {
-  color-scheme: dark;
-
-  --as-color-canvas: #080808;
-  --as-color-canvas-subtle: #111111;
-  --as-color-surface: #171717;
-  --as-color-surface-strong: #202020;
-  --as-color-foreground: #f5f2ea;
-  --as-color-muted: #b8b3a8;
-  --as-color-accent: #c6a15b;
-  --as-color-accent-soft: #d8be82;
-  --as-color-accent-contrast: #080808;
-  --as-color-border: #34322f;
-  --as-color-focus: #d8be82;
-  --as-color-available: #d8be82;
-  --as-color-reserved: #b78a4a;
-  --as-color-sold: #8e8a82;
-  --as-color-danger: #d58b82;
-
-  --as-shadow-subtle: 0 1px 0 rgb(255 255 255 / 0.04);
-}
-
 :root[data-theme="light"] {
   color-scheme: light;
 
@@ -41,6 +19,28 @@
   --as-color-danger: #8f352f;
 
   --as-shadow-subtle: 0 1px 0 rgb(23 23 23 / 0.08);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --as-color-canvas: #080808;
+  --as-color-canvas-subtle: #111111;
+  --as-color-surface: #171717;
+  --as-color-surface-strong: #202020;
+  --as-color-foreground: #f5f2ea;
+  --as-color-muted: #b8b3a8;
+  --as-color-accent: #c6a15b;
+  --as-color-accent-soft: #d8be82;
+  --as-color-accent-contrast: #080808;
+  --as-color-border: #34322f;
+  --as-color-focus: #d8be82;
+  --as-color-available: #d8be82;
+  --as-color-reserved: #b78a4a;
+  --as-color-sold: #8e8a82;
+  --as-color-danger: #d58b82;
+
+  --as-shadow-subtle: 0 1px 0 rgb(255 255 255 / 0.04);
 }
 
 @theme inline {

@@ -12,7 +12,7 @@ function applyTheme(theme: Theme) {
 }
 
 type ThemeToggleProps = {
-  variant?: "default" | "compact" | "icon";
+  variant?: "default" | "compact" | "icon" | "segmented";
 };
 
 export function ThemeToggle({ variant = "default" }: ThemeToggleProps) {
@@ -65,20 +65,43 @@ export function ThemeToggle({ variant = "default" }: ThemeToggleProps) {
     <button
       type="button"
       className={`touch-target border-border bg-surface text-foreground shadow-subtle hover:bg-surface-strong inline-flex items-center justify-center gap-2 border text-sm font-semibold transition-colors ${
-        variant === "default" ? "rounded-sm px-4 py-2" : "rounded-full px-3"
+        variant === "default"
+          ? "rounded-sm px-4 py-2"
+          : variant === "segmented"
+            ? "theme-toggle--segmented rounded-full p-1"
+            : "rounded-full px-3"
       }`}
       aria-label={label}
       aria-pressed={isLight}
       onClick={toggleTheme}
     >
-      <span aria-hidden="true" className="grid size-5 place-items-center">
-        {isLight ? (
-          <Sun size={19} weight="light" />
-        ) : (
-          <Moon size={19} weight="light" />
-        )}
-      </span>
-      {variant !== "icon" ? (
+      {variant === "segmented" ? (
+        <>
+          <span
+            aria-hidden="true"
+            className="grid size-9 place-items-center rounded-full"
+            data-active={isLight || undefined}
+          >
+            <Sun size={19} weight="light" />
+          </span>
+          <span
+            aria-hidden="true"
+            className="grid size-9 place-items-center rounded-full"
+            data-active={!isLight || undefined}
+          >
+            <Moon size={18} weight="light" />
+          </span>
+        </>
+      ) : (
+        <span aria-hidden="true" className="grid size-5 place-items-center">
+          {isLight ? (
+            <Sun size={19} weight="light" />
+          ) : (
+            <Moon size={19} weight="light" />
+          )}
+        </span>
+      )}
+      {variant !== "icon" && variant !== "segmented" ? (
         <span>
           {variant === "compact" ? "تم" : isLight ? "پوسته روشن" : "پوسته تیره"}
         </span>

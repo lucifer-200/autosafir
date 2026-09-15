@@ -1,37 +1,56 @@
-# AutoSafir homepage card/header revision — Design QA
+# AutoSafir cinematic homepage — Design QA
 
 ## Evidence
 
-- Source visual truth: the user-supplied 736×920 ORIZON DESIGN reference in this conversation.
-- Implementation captures: `docs/home-redesign/390x844-light-collection.png`, `390x844-dark-collection.png`, `1440x900-light-collection.png`, `844x390-light-collection.png`, plus all viewport/theme states in the same directory.
-- Captures are Chrome-rendered at DPR 1; the filename records CSS viewport and pixel dimensions. Responsive matrix: 360×640, 390×844, 430×932, 768×1024, 1024×768, 1440×900 and 844×390, light/dark and collection/showroom states.
-- The source is a visual-language reference. Its property imagery and real-estate labels are intentionally replaced with the supplied AutoSafir automotive asset and approved Persian content.
+- Source visual truth: `C:\Users\i.akhavan\.codex\generated_images\01a08668-a4e1-7753-a549-c51e3ad89efd\exec-c281c0a7-c9ed-46eb-8c51-11aaf0368948.png` (approved desktop direction) and `exec-c86225a7-8b6b-44f7-8278-9f6b08a1162b.png` (approved mobile direction).
+- Implementation: `http://127.0.0.1:2000/`, rendered and inspected in the Codex in-app browser.
+- Viewport: browser capture approximately 1279×846 CSS px at DPR 1, light theme, initial hero state.
+- Implementation screenshot path: unavailable; the in-app browser displayed the capture in-session but did not expose a filesystem path.
+- Density normalization: source and implementation were inspected as desktop compositions; the source is an art-direction target rather than a pixel-identical production frame.
 
-## Comparison history
+## Full-view comparison evidence
 
-- Resolved P1: previous implementation used one stationary card surface and swapped its contents. The revision keeps independent route articles, exposes the next card behind the active one and animates outgoing/incoming cards through distinct diagonal GSAP paths with rotation and scale.
-- Resolved P1: previous header sat outside the visual frame and resembled a conventional site header. It is now a white/graphite capsule inside the image, with compact links, primary CTA and round menu control.
-- Resolved P2: light/dark previously behaved mainly as a token swap. The revision changes shell, card material, borders, layered shadow, image brightness/saturation, overlay and control inversion per theme.
-- Resolved P2: the first revised capture showed the redundant bottom collection link beneath the carousel controls and landscape controls outside the frame. The duplicate link was removed and landscape deck position raised. The final automated matrix reports no overflow, offscreen control, obscured control or page error in 28 states.
+- The implementation preserves the defining composition: architectural wash outside a large rounded central frame, restrained notched ivory navigation, full-bleed automotive image, right-aligned editorial headline, large contact card and smaller inventory card.
+- AutoSafir remains the visual brand. Real confirmed branch and phone information replaces the reference's property copy.
+- The final browser pass confirmed that the AutoSafir label no longer clips against the header curve and the hero has no horizontal overflow.
+
+## Focused-region evidence
+
+- Header: inspected at full rendered scale; navigation spacing, theme control and sculpted corners remain legible.
+- Floating cards: confirmed clear hierarchy between the ivory contact card and smaller champagne inventory card.
+- Hero typography: Persian title, Latin eyebrow and CTA retain separate optical weights and sufficient contrast.
+- Lower-page focused captures were not available from the in-app browser API, so a complete visual fidelity judgment for all long-page sections cannot be recorded.
 
 ## Required fidelity surfaces
 
-- Typography: Estedad and Manrope remain consistent; display, navigation, metadata and action labels have distinct weights and spacing. Persian RTL and Latin counters stay aligned at all checked sizes.
-- Spacing/layout: the rounded image frame, embedded capsule header, left vertical rail, fixed desktop showroom card and layered destination deck reproduce the main reference hierarchy. Mobile reduces the header and shows one primary card plus a visible stacked successor.
-- Colors/tokens: light uses warm ivory, pearl white and graphite with a small champagne active mark. Dark uses obsidian/graphite, ivory and the same restrained accent. Both retain readable contrast.
-- Image quality: responsive AVIF/WebP versions of the supplied car image remain the only hero imagery. The crop keeps the vehicle as the central subject without generated replacements.
-- Copy/icons: each route has a Phosphor icon, numbered state, short factual detail and circular CTA. Contact rows use phone/location/social icons. Promotional filler and duplicate footer data remain absent.
-- Motion/accessibility: wheel, touch, buttons, PageUp/PageDown, arrows and browser history select the same independent cards. Inactive cards are inert; reduced motion removes spatial movement; controls preserve 44px targets and visible focus.
+- Fonts/typography: Estedad/Manrope hierarchy is coherent, with restrained weights and technical Latin labels. Hero wraps to three lines at the inspected viewport; acceptable for the cinematic composition.
+- Spacing/layout: central frame, overlap, radii and elevation match the approved direction. Desktop header clipping found in the first inspection was fixed with added inline margin.
+- Colors/tokens: warm ivory, champagne gold and graphite are mapped locally; dark mode uses obsidian while preserving the gold accent.
+- Image quality: existing responsive AVIF/WebP AutoSafir hero assets are retained. No replacement model or fake 3D asset was introduced.
+- Copy/content: no public prices, fabricated claims or fabricated branch data. Empty inventory receives an explicit premium recovery state.
+- Motion/accessibility: GSAP/ScrollTrigger owns scroll-linked depth; document scrolling remains native; reduced-motion disables choreography; semantic links and headings remain available without JavaScript motion.
+
+## Comparison history
+
+- P2 header brand clipping: the first browser inspection showed the final letters too close to the sculpted edge. Fixed by adding logical inline margin; the second browser inspection showed the full AutoSafir label.
+- P2 empty inventory gap: local storage may contain zero vehicles, leaving the first editorial section blank. Fixed with a truthful, designed empty state connected to contact.
+- P2 route mismatch: Home initially linked to non-existent `/sell` and `/collection/[slug]` routes. Fixed to `/sell-your-car` and `/vehicle?slug=...`.
+
+## Remaining findings
+
+- [P2] Complete long-page and mobile visual comparison is not captured to a persistent file.
+  - Location: sections below the hero and mobile 390px state.
+  - Evidence: automated responsive behavior passed, but the selected in-app browser exposes only a session image and no saved screenshot path.
+  - Impact: formal Product Design QA cannot prove all visual surfaces against the approved mockups.
+  - Fix: authorize a direct Playwright screenshot pass or provide a browser workflow that exposes persistent captures.
 
 ## Verification
 
-- `scripts/capture-home-qa.mjs`: 28 states, zero automated layout/hit-target/page-error failures.
-- Full browser suite: 48 passed and 8 intentional device-specific skips. The home scenarios passed for wheel, touch, URL/history, reduced motion and fixed viewport behavior. Unit/component suite: 65 passed. Build, TypeScript, lint and static export passed during the revision.
-- The Codex in-app browser could not initialize because its kernel-assets path was missing. Visual inspection used the captured Chrome output instead. This blocks the Product Design skill's preferred in-app-browser handoff even though the implementation and fallback browser verification pass.
-
-## Remaining P3
-
-- A wider authorized source photo would reduce the tight desktop crop.
-- Physical iPhone Safari verification remains outstanding.
+- TypeScript passed.
+- ESLint passed with zero warnings.
+- Unit/component tests: 26 files, 66 tests passed.
+- Home E2E: 7 passed, 1 intended desktop skip.
+- Combined foundation/Home E2E: 38 passed, 4 intended skips, 2 pre-existing vehicle-detail expectation failures unrelated to Home.
+- Static production build and export verification passed.
 
 final result: blocked

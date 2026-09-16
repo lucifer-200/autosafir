@@ -6,7 +6,7 @@ import {
   WhatsappLogo,
 } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 
 import { CONTACT_PHONES, SOCIAL_LINKS } from "@/data/branches";
 

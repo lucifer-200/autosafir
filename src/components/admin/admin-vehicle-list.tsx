@@ -7,7 +7,7 @@ import {
   Plus,
   Trash,
 } from "@phosphor-icons/react";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { AdminPageHeader } from "./admin-page-header";
@@ -112,7 +112,11 @@ export function AdminVehicleList() {
             >
               <DownloadSimple size={18} /> خروجی JSON
             </button>
-            <Link className="admin-primary-button" href="/admin/vehicles/new/">
+            <Link
+              className="admin-primary-button"
+              href="/admin/vehicles/new/"
+              prefetch={false}
+            >
               <Plus size={18} /> افزودن خودرو
             </Link>
           </>
@@ -195,7 +199,10 @@ export function AdminVehicleList() {
                 </div>
                 <AdminStatus status={vehicle.status} />
                 <div className="admin-ledger-actions">
-                  <Link href={`/admin/vehicles/edit/?id=${vehicle.id}`}>
+                  <Link
+                    href={`/admin/vehicles/edit/?id=${vehicle.id}`}
+                    prefetch={false}
+                  >
                     ویرایش
                   </Link>
                   <button

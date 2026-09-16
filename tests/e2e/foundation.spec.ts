@@ -156,7 +156,11 @@ test("vehicle detail is static-safe, complete, and exposes no public price", asy
   await expect(
     page.getByRole("region", { name: /گالری تصویر و ویدیوی/ }),
   ).toBeVisible();
-  await expect(page.getByText("تصویر اختصاصی این خودرو")).toBeVisible();
+  await expect(
+    page.getByRole("img", {
+      name: "Volkswagen Tiguan سفید مدل ۲۰۱۸ در نمایشگاه اتو سفیر",
+    }),
+  ).toBeVisible();
   await expect(page.getByRole("link", { name: /رزرو بازدید/ })).toHaveAttribute(
     "href",
     "/book-visit/?vehicle=volkswagen-tiguan-2018",
@@ -165,6 +169,9 @@ test("vehicle detail is static-safe, complete, and exposes no public price", asy
     page.getByRole("link", { name: /افزودن به مقایسه/ }),
   ).toHaveAttribute("href", "/compare/?add=volkswagen-tiguan-2018");
   await expect(page.locator("body")).not.toContainText(/قیمت|price/i);
+  await expect
+    .poll(() => page.evaluate(() => document.documentElement.scrollWidth))
+    .toBeLessThanOrEqual(await page.evaluate(() => window.innerWidth));
 });
 
 test("sold detail remains available with an alternatives action", async ({

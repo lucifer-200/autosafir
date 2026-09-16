@@ -10,9 +10,9 @@ import {
   SignOut,
   X,
 } from "@phosphor-icons/react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState, type ReactNode } from "react";
+import { StaticLink as Link } from "@/components/ui/static-link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { ADMIN_DEMO_SESSION_KEY } from "@/lib/admin-demo-auth";
@@ -26,21 +26,62 @@ const navigation = [
 
 export function AdminShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const router = useRouter();
   const isLogin = pathname === "/admin/login/" || pathname === "/admin/login";
   const [ready, setReady] = useState(isLogin);
   const [openPath, setOpenPath] = useState<string>();
   const open = openPath === pathname;
+  const sidebarRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    const trigger = triggerRef.current;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpenPath(undefined);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const controls = sidebarRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex="0"]',
+      );
+      if (!controls?.length) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+    const desktop = window.matchMedia("(min-width: 80rem)");
+    const handleResize = () => setOpenPath(undefined);
+    desktop.addEventListener("change", handleResize);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      desktop.removeEventListener("change", handleResize);
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus();
+    };
+  }, [open]);
 
   useEffect(() => {
     if (isLogin) return;
     // Deliberately insecure sessionStorage UI gate for the static demo only.
     if (window.sessionStorage.getItem(ADMIN_DEMO_SESSION_KEY) !== "active") {
-      router.replace("/admin/login/");
+      window.location.replace("/admin/login/");
       return;
     }
     queueMicrotask(() => setReady(true));
-  }, [isLogin, router]);
+  }, [isLogin]);
 
   if (isLogin) return children;
   if (!ready)
@@ -53,33 +94,41 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
   function signOut() {
     window.sessionStorage.removeItem(ADMIN_DEMO_SESSION_KEY);
-    router.replace("/admin/login/");
+    window.location.replace("/admin/login/");
   }
 
   return (
     <div className="admin-frame">
       <header className="admin-mobile-bar">
-        <Link href="/admin/" className="admin-mobile-brand">
+        <Link href="/admin/" prefetch={false} className="admin-mobile-brand">
           <span className="font-technical">AutoSafir</span>
           <small>ADMIN / DEMO</small>
         </Link>
         <button
+          ref={triggerRef}
           type="button"
           aria-label="باز کردن ناوبری مدیریت"
           aria-expanded={open}
+          aria-controls="admin-navigation"
           onClick={() => setOpenPath(pathname)}
         >
           <List size={24} />
         </button>
       </header>
 
-      <aside className="admin-sidebar" data-open={open || undefined}>
+      <aside
+        ref={sidebarRef}
+        id="admin-navigation"
+        className="admin-sidebar"
+        data-open={open || undefined}
+      >
         <div className="admin-sidebar__top">
-          <Link href="/admin/" className="admin-brand">
+          <Link href="/admin/" prefetch={false} className="admin-brand">
             <span className="font-technical">AutoSafir</span>
             <small className="font-technical">OPERATIONS / DEMO</small>
           </Link>
           <button
+            ref={closeRef}
             type="button"
             className="admin-sidebar__close"
             aria-label="بستن ناوبری مدیریت"
@@ -103,6 +152,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={false}
                 aria-current={active ? "page" : undefined}
                 data-active={active || undefined}
               >
@@ -114,7 +164,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
         </nav>
         <div className="admin-sidebar__footer">
           <ThemeToggle variant="compact" />
-          <Link href="/" target="_blank">
+          <Link href="/" prefetch={false} target="_blank">
             <ArrowSquareOut size={18} /> مشاهده سایت
           </Link>
           <button type="button" onClick={signOut}>
@@ -130,7 +180,9 @@ export function AdminShell({ children }: { children: ReactNode }) {
           onClick={() => setOpenPath(undefined)}
         />
       ) : null}
-      <div className="admin-workspace">{children}</div>
+      <div className="admin-workspace" inert={open}>
+        {children}
+      </div>
     </div>
   );
 }

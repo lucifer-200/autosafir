@@ -96,7 +96,7 @@
   position: relative;
   width: min(1420px, 100%);
   height: min(760px, calc(100svh - 154px));
-  min-height: 640px;
+  min-height: 760px;
   margin: 0 auto;
   color: #f8f4eb;
 }
@@ -138,11 +138,6 @@
       rgba(6, 6, 5, 0.6) 100%
     ),
     linear-gradient(0deg, rgba(6, 6, 5, 0.38), transparent 52%);
-}
-.home-three-slot {
-  position: absolute;
-  inset: 13% 16% 6%;
-  pointer-events: none;
 }
 .home-header {
   position: absolute;
@@ -224,7 +219,7 @@
 .home-hero__copy {
   position: absolute;
   z-index: 3;
-  top: 22%;
+  top: 14%;
   right: clamp(48px, 7vw, 110px);
   width: min(600px, 48%);
 }
@@ -288,7 +283,7 @@
   position: absolute;
   z-index: 8;
   left: 2%;
-  bottom: -54px;
+  bottom: clamp(20px, 2.2vw, 34px);
   width: min(540px, 40%);
 }
 .home-showroom-card {
@@ -366,7 +361,7 @@
   z-index: 8;
   left: auto;
   right: 2%;
-  bottom: -46px;
+  bottom: clamp(20px, 2.2vw, 34px);
   width: min(390px, 30%);
   min-height: 148px;
   padding: 26px 30px;
@@ -415,21 +410,13 @@
 .home-feature-float__image {
   position: absolute;
   left: 76px;
-  bottom: 12px;
-  width: 42%;
-  height: 68%;
-  object-fit: contain;
+  bottom: 24px;
+  width: 80px;
+  height: 76px;
+  border-radius: 10px;
+  object-fit: cover;
   object-position: center bottom;
-  opacity: 0.74;
-  mask-image: linear-gradient(90deg, transparent, #000 28%);
-}
-.home-concept-note {
-  position: absolute;
-  z-index: 2;
-  right: 24px;
-  bottom: 20px;
-  color: rgba(255, 255, 255, 0.56);
-  font-size: 0.58rem;
+  opacity: 0.9;
 }
 .home-mobile-dock {
   display: none;
@@ -497,7 +484,7 @@
 }
 .home-vehicle-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr 0.85fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 .home-vehicle-empty {
@@ -529,7 +516,9 @@
   color: inherit;
 }
 .home-vehicle-card > a {
-  display: block;
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto 1fr;
   color: inherit;
 }
 .home-vehicle-card__media {
@@ -538,9 +527,6 @@
   overflow: hidden;
   border-radius: 34px;
   background: #1b1b18;
-}
-.home-vehicle-card:first-child .home-vehicle-card__media {
-  aspect-ratio: 5 / 6;
 }
 .home-vehicle-card__media img {
   width: 100%;
@@ -578,7 +564,7 @@
 }
 .home-vehicle-card__body {
   position: relative;
-  padding: 18px 5px;
+  padding: 18px 5px 18px 36px;
 }
 .home-vehicle-card__body > div p {
   color: #96763d;
@@ -846,7 +832,7 @@
     width: calc(64% - 14px);
   }
   .home-showroom-card {
-    min-height: 146px;
+    min-height: 180px;
     padding: 18px 20px;
     border-radius: 30px;
   }
@@ -871,12 +857,13 @@
     left: auto;
     bottom: 16px;
     width: calc(36% - 14px);
-    min-height: 146px;
+    min-height: 180px;
     padding: 18px;
     border-radius: 30px;
   }
   .home-feature-float > p,
-  .home-feature-float > span {
+  .home-feature-float > span,
+  .home-feature-float__image {
     display: none;
   }
   .home-feature-float h2 {
@@ -885,7 +872,7 @@
   }
   .home-feature-float__count {
     display: block;
-    margin-top: 18px;
+    margin-top: 10px;
   }
   .home-feature-float strong {
     display: block;
@@ -899,9 +886,6 @@
     left: 14px;
     bottom: 14px;
     width: 36px;
-  }
-  .home-concept-note {
-    display: none;
   }
   .home-mobile-dock {
     position: relative;
@@ -953,8 +937,7 @@
     min-height: 260px;
     padding: 28px;
   }
-  .home-vehicle-card__media,
-  .home-vehicle-card:first-child .home-vehicle-card__media {
+  .home-vehicle-card__media {
     aspect-ratio: 4 / 4.8;
   }
   .home-manifesto {

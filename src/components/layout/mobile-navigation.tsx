@@ -3,7 +3,7 @@
 import { ArrowLeft, List, Phone, X } from "@phosphor-icons/react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 

@@ -1,5 +1,5 @@
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 
 import type { JournalArticle } from "@/features/journal/journal-content";
 

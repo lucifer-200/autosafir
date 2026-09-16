@@ -2,16 +2,17 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --as-color-canvas: #f8f9fa;
-  --as-color-canvas-subtle: #f0f1f2;
-  --as-color-surface: #ffffff;
-  --as-color-surface-strong: #eceeef;
+  --as-color-canvas: #f5f2ea;
+  --as-color-canvas-subtle: #ebe5d9;
+  --as-color-surface: #faf8f3;
+  --as-color-surface-strong: #e5ded0;
   --as-color-foreground: #171717;
   --as-color-muted: #625e56;
   --as-color-accent: #b4924f;
   --as-color-accent-soft: #c7a866;
+  --as-color-accent-ink: #80632d;
   --as-color-accent-contrast: #171717;
-  --as-color-border: #dedfe0;
+  --as-color-border: #d8d1c3;
   --as-color-focus: #171717;
   --as-color-available: #8a6d34;
   --as-color-reserved: #76592c;
@@ -32,6 +33,7 @@
   --as-color-muted: #b8b3a8;
   --as-color-accent: #c6a15b;
   --as-color-accent-soft: #d8be82;
+  --as-color-accent-ink: #d8be82;
   --as-color-accent-contrast: #080808;
   --as-color-border: #34322f;
   --as-color-focus: #d8be82;
@@ -52,6 +54,7 @@
   --color-muted: var(--as-color-muted);
   --color-accent: var(--as-color-accent);
   --color-accent-soft: var(--as-color-accent-soft);
+  --color-accent-ink: var(--as-color-accent-ink);
   --color-accent-contrast: var(--as-color-accent-contrast);
   --color-border: var(--as-color-border);
   --color-focus: var(--as-color-focus);

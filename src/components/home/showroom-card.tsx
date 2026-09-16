@@ -1,5 +1,5 @@
 import { ArrowUpLeft, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 
 import { CONTACT_PHONES, SHOWROOM_BRANCHES } from "@/data/branches";
 

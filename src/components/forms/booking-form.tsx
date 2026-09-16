@@ -8,6 +8,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { PRIMARY_CONTACT_PHONE, SHOWROOM_BRANCHES } from "@/data/branches";
+import { useClientReady } from "@/hooks/use-client-ready";
 import {
   createBookingSchema,
   getLocalDateInputValue,
@@ -33,6 +34,7 @@ interface BookingFormProps {
 }
 
 export function BookingForm({ service = demoLeadService }: BookingFormProps) {
+  const ready = useClientReady();
   const searchParams = useSearchParams();
   const requestedVehicle = searchParams.get("vehicle") ?? "";
   const vehicles = useVehicleStore((state) => state.vehicles);
@@ -282,7 +284,7 @@ export function BookingForm({ service = demoLeadService }: BookingFormProps) {
       <button
         type="submit"
         className="lead-primary-action"
-        disabled={form.formState.isSubmitting}
+        disabled={!ready || !hydrated || form.formState.isSubmitting}
       >
         {form.formState.isSubmitting
           ? "در حال آماده‌سازی…"

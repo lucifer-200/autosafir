@@ -1,6 +1,6 @@
 import { ArrowLeft, Phone } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 
 import { CopyAddressButton } from "@/components/content/copy-address-button";
 import {

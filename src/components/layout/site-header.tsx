@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 import { useEffect, useState } from "react";
 
 import { SafirLockup } from "@/components/branding/safir-lockup";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 
 import type { Vehicle } from "@/types/vehicle";
 
@@ -18,6 +18,7 @@ export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
   return (
     <article className="vehicle-card" data-status={vehicle.status}>
       <Link
+        prefetch={false}
         className="vehicle-card__link"
         href={`/vehicle?slug=${encodeURIComponent(vehicle.slug)}`}
         aria-label={`مشاهده ${vehicle.brand} ${vehicle.model}`}

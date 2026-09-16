@@ -2,10 +2,18 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, Check, Image as ImageIcon } from "@phosphor-icons/react";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  cloneElement,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type ReactElement,
+  type ComponentProps,
+} from "react";
 import { useForm, useWatch } from "react-hook-form";
 
 import { AdminPageHeader } from "./admin-page-header";
@@ -123,24 +131,34 @@ function Field({
 }: {
   label: string;
   error?: string;
-  children: React.ReactNode;
+  children: ReactElement<
+    | ComponentProps<"input">
+    | ComponentProps<"select">
+    | ComponentProps<"textarea">
+  >;
   hint?: string;
 }) {
+  const id = useId();
+  const descriptionId = `${id}-description`;
   return (
-    <label className="admin-field">
+    <label className="admin-field" data-invalid={error ? "true" : undefined}>
       <span>{label}</span>
-      {children}
+      {cloneElement(children, {
+        "aria-invalid": error ? true : undefined,
+        "aria-describedby": error || hint ? descriptionId : undefined,
+      })}
       {error ? (
-        <small role="alert">{error}</small>
+        <small id={descriptionId} role="alert">
+          {error}
+        </small>
       ) : hint ? (
-        <small>{hint}</small>
+        <small id={descriptionId}>{hint}</small>
       ) : null}
     </label>
   );
 }
 
 export function AdminVehicleForm({ vehicleId }: { vehicleId?: string }) {
-  const router = useRouter();
   const vehicles = useVehicleStore((state) => state.vehicles);
   const hydrated = useVehicleStore((state) => state.hydrated);
   const pending = useVehicleStore((state) => state.pending);
@@ -210,7 +228,11 @@ export function AdminVehicleForm({ vehicleId }: { vehicleId?: string }) {
           title="رکورد پیدا نشد"
           description="ممکن است خودرو حذف شده یا شناسه آدرس معتبر نباشد."
           actions={
-            <Link className="admin-secondary-button" href="/admin/vehicles/">
+            <Link
+              className="admin-secondary-button"
+              href="/admin/vehicles/"
+              prefetch={false}
+            >
               بازگشت
             </Link>
           }
@@ -239,7 +261,7 @@ export function AdminVehicleForm({ vehicleId }: { vehicleId?: string }) {
       const input = toInput(values);
       if (vehicleId) await updateVehicle(vehicleId, input);
       else await createVehicle(input);
-      router.push("/admin/vehicles/");
+      window.location.replace("/admin/vehicles/");
     } catch {
       setSubmitError("ذخیره انجام نشد. داده‌ها را بررسی و دوباره تلاش کنید.");
     }
@@ -252,7 +274,11 @@ export function AdminVehicleForm({ vehicleId }: { vehicleId?: string }) {
         title={vehicleId ? "ویرایش خودرو" : "افزودن خودرو"}
         description="رکورد ذخیره‌شده بلافاصله در مجموعه عمومی همان مرورگر قابل مشاهده است."
         actions={
-          <Link href="/admin/vehicles/" className="admin-secondary-button">
+          <Link
+            href="/admin/vehicles/"
+            prefetch={false}
+            className="admin-secondary-button"
+          >
             <ArrowRight size={18} /> بازگشت
           </Link>
         }

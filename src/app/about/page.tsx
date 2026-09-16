@@ -1,7 +1,7 @@
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 
 export const metadata: Metadata = {
   title: "درباره اتو سفیر | دموی اتو سفیر",

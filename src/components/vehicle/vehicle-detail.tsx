@@ -11,7 +11,7 @@ import {
   SquaresFour,
   WhatsappLogo,
 } from "@phosphor-icons/react";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 

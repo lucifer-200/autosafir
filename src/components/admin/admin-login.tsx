@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowLeft, LockSimpleOpen } from "@phosphor-icons/react";
-import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
+import { useClientReady } from "@/hooks/use-client-ready";
 
 import {
   ADMIN_DEMO_CREDENTIALS,
@@ -11,8 +11,8 @@ import {
 } from "@/lib/admin-demo-auth";
 
 export function AdminLogin() {
-  const router = useRouter();
   const [error, setError] = useState("");
+  const ready = useClientReady();
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,7 +28,7 @@ export function AdminLogin() {
     }
     // This flag is not authentication. It only keeps the presentation UI tidy.
     window.sessionStorage.setItem(ADMIN_DEMO_SESSION_KEY, "active");
-    router.replace("/admin/");
+    window.location.replace("/admin/");
   }
 
   return (
@@ -65,23 +65,38 @@ export function AdminLogin() {
         </div>
         <form onSubmit={submit} noValidate>
           <label htmlFor="admin-username">نام کاربری</label>
-          <input id="admin-username" name="username" autoComplete="username" />
+          <input
+            id="admin-username"
+            name="username"
+            autoComplete="username"
+            disabled={!ready}
+          />
           <label htmlFor="admin-password">رمز نمایشی</label>
           <input
             id="admin-password"
             name="password"
             type="password"
             autoComplete="current-password"
+            disabled={!ready}
           />
           {error ? (
             <p className="admin-form-error" role="alert">
               {error}
             </p>
           ) : null}
-          <button type="submit" className="admin-primary-button">
+          <button
+            type="submit"
+            className="admin-primary-button"
+            disabled={!ready}
+          >
             ورود به نسخه نمایشی <ArrowLeft size={18} />
           </button>
         </form>
+        <noscript>
+          <p className="admin-form-error">
+            برای استفاده از فرم نمایشی، JavaScript مرورگر باید فعال باشد.
+          </p>
+        </noscript>
         <small>
           در نسخه Production این نقطه با نشست HttpOnly، احراز هویت سمت سرور و
           کنترل نقش جایگزین می‌شود.

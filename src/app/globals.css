@@ -385,7 +385,7 @@ a {
 }
 
 .site-footer a:hover {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 
 .site-footer__brand > p {
@@ -566,7 +566,7 @@ a {
 .collection-filter-heading span,
 .collection-sheet header span {
   margin: 0;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.64rem;
   font-weight: 650;
   letter-spacing: 0.18em;
@@ -823,7 +823,7 @@ a {
 
 .vehicle-card__eyebrow {
   margin: 0;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.64rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -852,7 +852,7 @@ a {
 .vehicle-card__arrow {
   position: absolute;
   inset: 1.05rem auto auto 1.1rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 1.35rem;
 }
 
@@ -901,7 +901,7 @@ a {
 }
 
 .collection-empty svg {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 .collection-empty h3 {
   margin: 1rem 0 0;
@@ -1094,7 +1094,7 @@ a {
     padding: 0;
     border: 0;
     background: transparent;
-    color: var(--as-color-accent-soft);
+    color: var(--as-color-accent-ink);
     font-size: 0.68rem;
   }
   .collection-filter-desktop .collection-filter-fields {
@@ -1156,7 +1156,7 @@ a {
 .vehicle-detail-missing > p:first-child,
 .vehicle-detail-loading > span {
   margin: 0;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.63rem;
   font-weight: 650;
   letter-spacing: 0.18em;
@@ -1178,14 +1178,21 @@ a {
   align-items: baseline;
   gap: 0.4rem 0.7rem;
   font-family: "Manrope Variable", sans-serif;
-  font-size: clamp(2.6rem, 14vw, 6.5rem);
+  font-size: clamp(2rem, 14cqi, 6.5rem);
   font-weight: 410;
   line-height: 0.94;
   text-align: left;
 }
 
 .vehicle-detail-hero h1 span {
+  min-width: 0;
   width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.vehicle-detail-hero__copy {
+  min-width: 0;
+  container-type: inline-size;
 }
 
 .vehicle-detail-hero h1 small {
@@ -1196,7 +1203,7 @@ a {
 
 .vehicle-detail-hero__year {
   margin: 1.25rem 0 0;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.73rem;
   letter-spacing: 0.08em;
   text-align: left;
@@ -1475,7 +1482,7 @@ a {
 .vehicle-advisor a {
   width: max-content;
   min-height: 2.75rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   align-content: center;
   font-family: "Manrope Variable", sans-serif;
   font-size: 0.74rem;
@@ -1550,7 +1557,7 @@ a {
   display: inline-flex;
   min-height: 2.75rem;
   margin-top: 1rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   align-items: center;
   font-size: 0.76rem;
 }
@@ -1692,7 +1699,7 @@ a {
     justify-content: center;
   }
   .vehicle-detail-hero h1 {
-    font-size: clamp(3.5rem, 6vw, 6.5rem);
+    font-size: clamp(2rem, 14cqi, 6.5rem);
   }
   .vehicle-gallery,
   .vehicle-gallery__fallback {
@@ -1736,6 +1743,10 @@ a {
   .vehicle-detail-section,
   .vehicle-related {
     margin-inline: 2rem;
+  }
+  .vehicle-related {
+    width: min(calc(100% - 4rem), 86rem);
+    margin-inline: auto;
   }
   .vehicle-sold-note {
     margin-top: 2rem;
@@ -1823,7 +1834,7 @@ a {
 .compare-empty > span,
 .compare-ledger__heading > span {
   margin: 0;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.62rem;
   font-weight: 650;
   letter-spacing: 0.18em;
@@ -1845,7 +1856,7 @@ a {
 }
 
 .compare-hero__count strong {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 2.3rem;
   font-weight: 420;
   line-height: 1;
@@ -1881,7 +1892,7 @@ a {
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.7rem;
 }
 
@@ -1919,7 +1930,7 @@ a {
   width: 2.75rem;
   height: 2.75rem;
   border: 1px solid var(--as-color-border);
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   place-items: center;
 }
 
@@ -2072,7 +2083,7 @@ a {
 
 .compare-table thead th:first-child {
   z-index: 3;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 
 .compare-table thead button {
@@ -2102,7 +2113,7 @@ a {
 
 .compare-table thead strong span {
   margin-top: 0.1rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 
 .compare-table thead small {
@@ -2114,7 +2125,7 @@ a {
 .compare-table tbody th span {
   display: block;
   margin-top: 0.2rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-family: "Manrope Variable", sans-serif;
   font-size: 0.52rem;
   letter-spacing: 0.06em;
@@ -2208,7 +2219,7 @@ a {
 .lead-step__heading > span,
 .lead-success > p:first-of-type {
   margin: 0;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.62rem;
   font-weight: 650;
   letter-spacing: 0.18em;
@@ -2284,7 +2295,7 @@ a {
 }
 
 .lead-progress li > span {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.58rem;
 }
 
@@ -2396,7 +2407,7 @@ a {
   padding: 2rem 1.25rem;
   border: 1px dashed var(--as-color-accent);
   background: color-mix(in srgb, var(--as-color-accent) 4%, transparent);
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -2535,7 +2546,7 @@ a {
   height: 3.25rem;
   margin-bottom: 1.5rem;
   border: 1px solid var(--as-color-accent);
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   place-items: center;
 }
 
@@ -2578,7 +2589,7 @@ a {
   margin-bottom: 1.5rem;
   border: 1px solid var(--as-color-accent);
   border-radius: 50%;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   place-items: center;
 }
 
@@ -2722,7 +2733,7 @@ a {
 .journal-related > div > p:first-child,
 .content-next-step > div > p:first-child {
   margin: 0;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.62rem;
   font-weight: 650;
   letter-spacing: 0.18em;
@@ -2836,7 +2847,7 @@ a {
 }
 
 .about-values li > span {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.66rem;
 }
 
@@ -2905,7 +2916,7 @@ a {
 
 .branch-ledger__number {
   padding-top: 0.15rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.68rem;
 }
 
@@ -2956,7 +2967,7 @@ a {
 
 .copy-address button[data-state="copied"] {
   border-color: var(--as-color-accent);
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 
 .copy-address button[data-state="failed"] {
@@ -3049,7 +3060,7 @@ a {
 }
 
 .contact-ledger__heading > svg {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 
 .contact-ledger ul {
@@ -3073,7 +3084,7 @@ a {
 }
 
 .contact-ledger a svg {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 
 .contact-social {
@@ -3107,7 +3118,7 @@ a {
 }
 
 .contact-social li > a > svg:first-child {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 
 .contact-social li > a > span {
@@ -3181,7 +3192,7 @@ a {
 
 .journal-feature > span:first-child {
   margin-bottom: auto;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.6rem;
   font-weight: 650;
   letter-spacing: 0.16em;
@@ -3202,7 +3213,7 @@ a {
 
 .journal-feature > span:last-child {
   margin-top: 1rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.66rem;
 }
 
@@ -3230,7 +3241,7 @@ a {
 }
 
 .journal-card__number {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.65rem;
 }
 
@@ -3264,7 +3275,7 @@ a {
 
 .journal-card__arrow {
   display: grid;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   place-items: center;
 }
 
@@ -3407,7 +3418,7 @@ a {
 .journal-article__meta {
   display: flex;
   margin-top: 2.5rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   gap: 0.8rem;
   font-size: 0.66rem;
 }
@@ -3513,7 +3524,7 @@ a {
 }
 
 .journal-related > svg {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 
 .journal-related h2 {
@@ -3779,7 +3790,7 @@ a {
 }
 .admin-mobile-brand small,
 .admin-brand small {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.52rem;
   letter-spacing: 0.14em;
 }
@@ -3806,10 +3817,12 @@ a {
   background: var(--as-color-canvas-subtle);
   flex-direction: column;
   translate: 110% 0;
+  visibility: hidden;
   transition: translate 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .admin-sidebar[data-open] {
   translate: 0;
+  visibility: visible;
 }
 .admin-sidebar__top {
   display: flex;
@@ -3829,7 +3842,7 @@ a {
   background: var(--as-color-surface);
 }
 .admin-demo-stamp span {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.58rem;
   letter-spacing: 0.15em;
 }
@@ -3864,7 +3877,7 @@ a {
   color: var(--as-color-foreground);
 }
 .admin-sidebar nav a[data-active] svg {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 .admin-sidebar__footer {
   display: grid;
@@ -3905,7 +3918,7 @@ a {
 }
 .admin-kicker {
   margin: 0;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -4097,7 +4110,7 @@ a {
   width: 2.4rem;
   height: 2.4rem;
   border: 1px solid var(--as-color-border);
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   place-items: center;
 }
 .admin-recent li > div {
@@ -4199,7 +4212,7 @@ a {
   gap: 0.6rem;
 }
 .admin-search svg {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 .admin-search input {
   min-width: 0;
@@ -4273,6 +4286,7 @@ a {
 }
 .admin-ledger-name {
   min-width: 0;
+  text-align: right;
 }
 .admin-ledger-name strong {
   display: block;
@@ -4345,7 +4359,7 @@ a {
   min-height: 2.75rem;
   border: 0;
   background: transparent;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.68rem;
   text-decoration: underline;
   cursor: pointer;
@@ -4402,7 +4416,7 @@ a {
 }
 .admin-form-section > header > span {
   padding-top: 0.35rem;
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.52rem;
 }
 .admin-form-section h2 {
@@ -4418,11 +4432,13 @@ a {
 }
 .admin-form-grid {
   display: grid;
+  align-items: start;
   gap: 0.8rem;
 }
 .admin-field {
   display: grid;
   min-width: 0;
+  align-content: start;
   gap: 0.4rem;
 }
 .admin-field > span,
@@ -4442,7 +4458,7 @@ a {
   outline: 0;
   background: var(--as-color-surface);
   color: var(--as-color-foreground);
-  font-size: 0.72rem;
+  font-size: 1rem;
   resize: vertical;
 }
 .admin-field input:focus,
@@ -4457,6 +4473,14 @@ a {
 }
 .admin-field > small[role="alert"] {
   color: var(--as-color-danger);
+}
+.admin-field[data-invalid] input,
+.admin-field[data-invalid] select,
+.admin-field[data-invalid] textarea {
+  border-color: var(--as-color-danger);
+}
+.admin-login__identity .admin-kicker {
+  color: #d8be82;
 }
 .admin-local-preview {
   display: grid;
@@ -4498,8 +4522,7 @@ a {
   line-height: 1.8;
 }
 .admin-form-footer {
-  position: sticky;
-  inset-block-end: 0;
+  position: static;
   z-index: 10;
   display: flex;
   margin: 1rem -1rem 0;
@@ -4543,7 +4566,7 @@ a {
   align-items: flex-start;
 }
 .admin-setting-card > svg {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 .admin-setting-card .admin-kicker {
   margin-top: 1.5rem;
@@ -4580,7 +4603,7 @@ a {
   gap: 0.8rem;
 }
 .admin-storage-status > svg {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 .admin-storage-status p {
   margin: 0;
@@ -4593,7 +4616,7 @@ a {
   font-size: 0.72rem;
 }
 .admin-storage-status > span {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-size: 0.56rem;
 }
 .admin-storage-status > small {
@@ -4724,7 +4747,7 @@ a {
 }
 .admin-pipeline li[data-state="ACTIVE"] .admin-pipeline__state {
   border-color: var(--as-color-accent);
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
 }
 .admin-pipeline li[data-state="COMPLETE"] .admin-pipeline__state {
   color: var(--as-color-available);
@@ -4829,7 +4852,7 @@ a {
   font-size: 0.6rem;
 }
 .admin-credentials code {
-  color: var(--as-color-accent-soft);
+  color: var(--as-color-accent-ink);
   font-family: "Manrope Variable", sans-serif;
   font-size: 0.65rem;
   direction: ltr;
@@ -4888,6 +4911,11 @@ a {
   .admin-form-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .admin-field input,
+  .admin-field select,
+  .admin-field textarea {
+    font-size: 0.82rem;
+  }
   .admin-form-grid--wide > * {
     grid-column: span 1;
   }
@@ -4919,6 +4947,8 @@ a {
     grid-column: auto;
   }
   .admin-form-footer {
+    position: sticky;
+    inset-block-end: 0;
     margin-inline: 0;
     flex-direction: row;
     align-items: center;
@@ -4926,7 +4956,7 @@ a {
   }
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 80rem) {
   .admin-frame {
     display: grid;
     grid-template-columns: 18rem minmax(0, 1fr);
@@ -4943,6 +4973,7 @@ a {
     width: auto;
     height: 100svh;
     translate: 0;
+    visibility: visible;
   }
   .admin-workspace {
     grid-column: 2;
@@ -4973,7 +5004,7 @@ a {
   .admin-ledger-head {
     display: grid;
     min-height: 3rem;
-    padding-inline: 5rem 1rem;
+    padding-inline: 1rem 5rem;
     border-bottom: 1px solid var(--as-color-border);
     color: var(--as-color-muted);
     grid-template-columns: minmax(0, 1.4fr) 10rem 9rem 8rem;
@@ -4981,7 +5012,7 @@ a {
     gap: 1rem;
     font-size: 0.5rem;
     letter-spacing: 0.1em;
-    direction: ltr;
+    direction: rtl;
   }
   .admin-vehicle-ledger li {
     min-height: 6.5rem;

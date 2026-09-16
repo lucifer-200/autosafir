@@ -1,0 +1,1773 @@
+[
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 7638,
+      "cards": [
+        {
+          "height": 545,
+          "width": 362
+        },
+        {
+          "height": 545,
+          "width": 362
+        },
+        {
+          "height": 545,
+          "width": 362
+        }
+      ],
+      "contactCard": {
+        "bottom": 732,
+        "height": 146,
+        "left": 26,
+        "right": 244,
+        "top": 586,
+        "width": 218
+      },
+      "featureCard": {
+        "bottom": 732,
+        "height": 146,
+        "left": 248,
+        "right": 364,
+        "top": 586,
+        "width": 116
+      },
+      "heroFrame": {
+        "bottom": 748,
+        "height": 736,
+        "left": 14,
+        "right": 376,
+        "top": 12,
+        "width": 362
+      },
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "story-card",
+          "left": -231,
+          "right": 66,
+          "tag": "article"
+        },
+        {
+          "className": "",
+          "left": -231,
+          "right": 66,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": -230,
+          "right": 65,
+          "tag": "img"
+        },
+        {
+          "className": "story-card__shade",
+          "left": -230,
+          "right": 65,
+          "tag": "span"
+        },
+        {
+          "className": "story-card__content",
+          "left": -212,
+          "right": 47,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": -212,
+          "right": 47,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": -212,
+          "right": 47,
+          "tag": "strong"
+        },
+        {
+          "className": "",
+          "left": -212,
+          "right": 47,
+          "tag": "small"
+        },
+        {
+          "className": "story-card__action",
+          "left": -212,
+          "right": 47,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": -212,
+          "right": -195,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": -208,
+          "right": -199,
+          "tag": "path"
+        },
+        {
+          "className": "story-card",
+          "left": -539,
+          "right": -243,
+          "tag": "article"
+        },
+        {
+          "className": "",
+          "left": -539,
+          "right": -243,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": -538,
+          "right": -244,
+          "tag": "img"
+        },
+        {
+          "className": "story-card__shade",
+          "left": -538,
+          "right": -244,
+          "tag": "span"
+        },
+        {
+          "className": "story-card__index font-technical",
+          "left": -296,
+          "right": -260,
+          "tag": "span"
+        },
+        {
+          "className": "story-card__content",
+          "left": -521,
+          "right": -261,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": -521,
+          "right": -261,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": -521,
+          "right": -261,
+          "tag": "strong"
+        },
+        {
+          "className": "",
+          "left": -521,
+          "right": -261,
+          "tag": "small"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-home.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 7008,
+      "cards": [
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        }
+      ],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/collection/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-collection.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 5477,
+      "cards": [
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        },
+        {
+          "height": 379,
+          "width": 358
+        }
+      ],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/vehicle/?slug=volkswagen-tiguan-2018",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-vehicle.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 2607,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/compare/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-compare.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 1620,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/sell-your-car/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-sell.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 1969,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/book-visit/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-book.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 2717,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/about/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-about.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 1931,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/branches/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-branches.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 2351,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/contact/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-contact.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 3024,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "story-card",
+          "left": -231,
+          "right": 66,
+          "tag": "article"
+        },
+        {
+          "className": "",
+          "left": -231,
+          "right": 66,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": -230,
+          "right": 65,
+          "tag": "img"
+        },
+        {
+          "className": "story-card__shade",
+          "left": -230,
+          "right": 65,
+          "tag": "span"
+        },
+        {
+          "className": "story-card__content",
+          "left": -212,
+          "right": 47,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": -212,
+          "right": 47,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": -212,
+          "right": 47,
+          "tag": "strong"
+        },
+        {
+          "className": "",
+          "left": -212,
+          "right": 47,
+          "tag": "small"
+        },
+        {
+          "className": "story-card__action",
+          "left": -212,
+          "right": 47,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": -212,
+          "right": -195,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": -208,
+          "right": -199,
+          "tag": "path"
+        },
+        {
+          "className": "story-card",
+          "left": -539,
+          "right": -243,
+          "tag": "article"
+        },
+        {
+          "className": "",
+          "left": -539,
+          "right": -243,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": -538,
+          "right": -244,
+          "tag": "img"
+        },
+        {
+          "className": "story-card__shade",
+          "left": -538,
+          "right": -244,
+          "tag": "span"
+        },
+        {
+          "className": "story-card__index font-technical",
+          "left": -296,
+          "right": -260,
+          "tag": "span"
+        },
+        {
+          "className": "story-card__content",
+          "left": -521,
+          "right": -261,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": -521,
+          "right": -261,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": -521,
+          "right": -261,
+          "tag": "strong"
+        },
+        {
+          "className": "",
+          "left": -521,
+          "right": -261,
+          "tag": "small"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/journal/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-journal.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 991,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/login/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-admin-login.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 1756,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-admin-dashboard.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 2850,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/vehicles/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-admin-vehicles.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 3444,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/vehicles/new/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-admin-vehicle-new.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 1690,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/integrations/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-admin-integrations.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 1434,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/settings/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\mobile-admin-settings.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 7012,
+      "cards": [
+        {
+          "height": 620,
+          "width": 408
+        },
+        {
+          "height": 620,
+          "width": 408
+        },
+        {
+          "height": 620,
+          "width": 408
+        }
+      ],
+      "contactCard": {
+        "bottom": 820,
+        "height": 230,
+        "left": 84,
+        "right": 614,
+        "top": 590,
+        "width": 530
+      },
+      "featureCard": {
+        "bottom": 820,
+        "height": 201,
+        "left": 966,
+        "right": 1356,
+        "top": 619,
+        "width": 390
+      },
+      "heroFrame": {
+        "bottom": 852,
+        "height": 746,
+        "left": 58,
+        "right": 1382,
+        "top": 106,
+        "width": 1325
+      },
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-home.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 3096,
+      "cards": [
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        },
+        {
+          "height": 375,
+          "width": 351
+        }
+      ],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/collection/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-collection.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 3726,
+      "cards": [
+        {
+          "height": 435,
+          "width": 447
+        },
+        {
+          "height": 435,
+          "width": 447
+        },
+        {
+          "height": 435,
+          "width": 447
+        }
+      ],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/vehicle/?slug=volkswagen-tiguan-2018",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-vehicle.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 1767,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/compare/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-compare.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 1420,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/sell-your-car/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-sell.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 1623,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/book-visit/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-book.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 2437,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/about/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-about.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 1862,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/branches/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-branches.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 2091,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/contact/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-contact.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 3045,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/journal/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-journal.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "metrics": {
+      "bodyHeight": 900,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/login/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-admin-login.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 1156,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-admin-dashboard.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 2051,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/vehicles/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-admin-vehicles.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 1906,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/vehicles/new/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-admin-vehicle-new.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 1249,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/integrations/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-admin-integrations.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "metrics": {
+      "bodyHeight": 900,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/settings/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-after\\desktop-admin-settings.png",
+    "viewport": "desktop"
+  }
+]

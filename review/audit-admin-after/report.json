@@ -1,0 +1,859 @@
+[
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 991,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/login/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\mobile-admin-login.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 1756,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\mobile-admin-dashboard.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 2850,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/vehicles/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\mobile-admin-vehicles.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 3444,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/vehicles/new/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\mobile-admin-vehicle-new.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 1690,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/integrations/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\mobile-admin-integrations.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 1434,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [
+        {
+          "className": "admin-sidebar",
+          "left": 422,
+          "right": 742,
+          "tag": "aside"
+        },
+        {
+          "className": "admin-sidebar__top",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "admin-brand",
+          "left": 617,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "span"
+        },
+        {
+          "className": "font-technical",
+          "left": 617,
+          "right": 724,
+          "tag": "small"
+        },
+        {
+          "className": "admin-sidebar__close",
+          "left": 441,
+          "right": 485,
+          "tag": "button"
+        },
+        {
+          "className": "",
+          "left": 452,
+          "right": 474,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 457,
+          "right": 470,
+          "tag": "path"
+        },
+        {
+          "className": "admin-demo-stamp",
+          "left": 441,
+          "right": 724,
+          "tag": "div"
+        },
+        {
+          "className": "font-technical",
+          "left": 656,
+          "right": 706,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 458,
+          "right": 706,
+          "tag": "p"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "nav"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 692,
+          "right": 709,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 636,
+          "right": 679,
+          "tag": "span"
+        },
+        {
+          "className": "",
+          "left": 441,
+          "right": 724,
+          "tag": "a"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "svg"
+        },
+        {
+          "className": "",
+          "left": 691,
+          "right": 710,
+          "tag": "path"
+        },
+        {
+          "className": "",
+          "left": 639,
+          "right": 679,
+          "tag": "span"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/settings/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\mobile-admin-settings.png",
+    "viewport": "mobile"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 900,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/login/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\desktop-admin-login.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 1156,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\desktop-admin-dashboard.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 2051,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/vehicles/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\desktop-admin-vehicles.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 1906,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/vehicles/new/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\desktop-admin-vehicle-new.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 1249,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/integrations/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\desktop-admin-integrations.png",
+    "viewport": "desktop"
+  },
+  {
+    "consoleErrors": [],
+    "failedResponses": [],
+    "metrics": {
+      "bodyHeight": 900,
+      "cards": [],
+      "contactCard": null,
+      "featureCard": null,
+      "heroFrame": null,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "pageErrors": [],
+    "route": "/admin/settings/",
+    "screenshotPath": "D:\\autosafir\\review\\audit-admin-after\\desktop-admin-settings.png",
+    "viewport": "desktop"
+  }
+]

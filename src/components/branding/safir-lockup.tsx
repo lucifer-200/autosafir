@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 
 type SafirLockupProps = {
   inverse?: boolean;

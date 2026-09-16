@@ -11,7 +11,7 @@ import {
   Sparkle,
   SteeringWheel,
 } from "@phosphor-icons/react";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 import { useEffect, useMemo, useRef } from "react";
 
 import { AkhWordmark } from "@/components/branding/akh-wordmark";
@@ -164,11 +164,6 @@ export function HomeExperience() {
               />
             </picture>
             <span className="home-hero__shade" aria-hidden="true" />
-            <div
-              className="home-three-slot"
-              data-three-slot
-              aria-hidden="true"
-            />
           </div>
 
           <header className="home-header">
@@ -261,10 +256,6 @@ export function HomeExperience() {
               <ArrowUpLeft size={21} />
             </Link>
           </aside>
-
-          <span className="home-concept-note">
-            تصویر مفهومی · جایگاه آماده برای مدل سه‌بعدی نهایی
-          </span>
         </div>
         <nav className="home-mobile-dock" aria-label="دسترسی سریع">
           {dockItems.map((item) => {

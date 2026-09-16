@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 
 import { JournalCard } from "@/components/content/journal-card";
 import { SafirStories } from "@/components/content/safir-stories";

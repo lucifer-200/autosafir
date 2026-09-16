@@ -8,6 +8,68 @@ async function enterAdmin(page: Page) {
   await expect(page).toHaveURL(/\/admin\/$/);
 }
 
+test("static login cannot submit before JavaScript is ready", async ({
+  browser,
+}, info) => {
+  test.skip(info.project.name !== "desktop-chromium", "static HTML contract");
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    await page.goto("http://127.0.0.1:4173/admin/login/");
+    await expect(page.getByLabel("نام کاربری")).toBeDisabled();
+    await expect(page.getByLabel("رمز نمایشی")).toBeDisabled();
+    await expect(
+      page.getByRole("button", { name: "ورود به نسخه نمایشی" }),
+    ).toBeDisabled();
+    await expect(
+      page.getByText(/JavaScript مرورگر باید فعال باشد/),
+    ).toBeVisible();
+  } finally {
+    await context.close();
+  }
+});
+
+test("mobile admin navigation traps focus and closes with Escape", async ({
+  page,
+}, info) => {
+  test.skip(info.project.name !== "mobile-chromium", "mobile navigation");
+  await enterAdmin(page);
+  const trigger = page.getByRole("button", { name: "باز کردن ناوبری مدیریت" });
+  const sidebar = page.locator(".admin-sidebar");
+  await expect(sidebar).toHaveCSS("visibility", "hidden");
+  await trigger.click();
+  await expect(
+    sidebar.getByRole("button", { name: "بستن ناوبری مدیریت" }),
+  ).toBeFocused();
+  await sidebar.getByRole("button", { name: "خروج از دمو" }).focus();
+  await page.keyboard.press("Tab");
+  await expect(sidebar.getByRole("link", { name: /AutoSafir/ })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(sidebar).toHaveCSS("visibility", "hidden");
+  await expect(trigger).toBeFocused();
+  expect(await page.evaluate(() => document.body.style.overflow)).not.toBe(
+    "hidden",
+  );
+});
+
+test("admin validation associates errors with controls", async ({
+  page,
+}, info) => {
+  test.skip(info.project.name !== "desktop-chromium", "single validation flow");
+  await enterAdmin(page);
+  await page.goto("/admin/vehicles/new/");
+  await page.getByRole("button", { name: "ثبت خودرو" }).click();
+  const brand = page.getByLabel("برند");
+  await expect(brand).toHaveAttribute("aria-invalid", "true");
+  const description = await brand.getAttribute("aria-describedby");
+  expect(description).toBeTruthy();
+  await expect(page.locator(`[id="${description}"]`)).toHaveAttribute(
+    "role",
+    "alert",
+  );
+  await expect(page.locator(`[id="${description}"]`)).not.toBeEmpty();
+});
+
 test("admin gate is explicit about insecurity and exposes no secret claim", async ({
   page,
 }) => {
@@ -18,6 +80,20 @@ test("admin gate is explicit about insecurity and exposes no secret claim", asyn
   ).toBeVisible();
   await expect(page.getByText("دروازه نمایشی ناامن")).toBeVisible();
   await expect(page.getByText(/احراز هویت واقعی/)).toBeVisible();
+});
+
+test("admin dashboard loads without missing static prefetch payloads", async ({
+  page,
+}) => {
+  const failedResponses: string[] = [];
+  page.on("response", (response) => {
+    if (response.status() >= 400) failedResponses.push(response.url());
+  });
+
+  await enterAdmin(page);
+  await page.waitForLoadState("networkidle");
+
+  expect(failedResponses).toEqual([]);
 });
 
 test("admin CRUD is reflected in the static-safe public store", async ({

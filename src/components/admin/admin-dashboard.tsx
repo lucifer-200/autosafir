@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, CarProfile, Plus } from "@phosphor-icons/react";
-import Link from "next/link";
+import { StaticLink as Link } from "@/components/ui/static-link";
 import { useEffect, useMemo } from "react";
 
 import { AdminPageHeader } from "./admin-page-header";
@@ -37,7 +37,11 @@ export function AdminDashboard() {
         title="نمای کلی موجودی"
         description="تصویری دقیق از داده‌ای که همین حالا در سایت عمومی دیده می‌شود."
         actions={
-          <Link href="/admin/vehicles/new/" className="admin-primary-button">
+          <Link
+            href="/admin/vehicles/new/"
+            prefetch={false}
+            className="admin-primary-button"
+          >
             <Plus size={18} /> افزودن خودرو
           </Link>
         }
@@ -68,7 +72,7 @@ export function AdminDashboard() {
               <p className="admin-kicker font-technical">RECENT RECORDS</p>
               <h2>آخرین خودروها</h2>
             </div>
-            <Link href="/admin/vehicles/">
+            <Link href="/admin/vehicles/" prefetch={false}>
               مشاهده همه <ArrowLeft size={16} />
             </Link>
           </header>
@@ -90,6 +94,7 @@ export function AdminDashboard() {
                   <AdminStatus status={vehicle.status} />
                   <Link
                     href={`/admin/vehicles/edit/?id=${vehicle.id}`}
+                    prefetch={false}
                     aria-label={`ویرایش ${vehicle.brand} ${vehicle.model}`}
                   >
                     ویرایش
@@ -100,7 +105,9 @@ export function AdminDashboard() {
           ) : (
             <div className="admin-empty">
               <p>هنوز خودرویی ثبت نشده است.</p>
-              <Link href="/admin/vehicles/new/">ساخت اولین رکورد</Link>
+              <Link href="/admin/vehicles/new/" prefetch={false}>
+                ساخت اولین رکورد
+              </Link>
             </div>
           )}
         </article>

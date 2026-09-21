@@ -27,6 +27,11 @@ describe("MobileNavigation", () => {
 
     const dialog = await screen.findByRole("dialog", { name: "منوی اصلی" });
     expect(dialog).toHaveAttribute("aria-modal", "true");
+    expect(dialog.parentElement).toBe(document.body);
+    expect(dialog.querySelector(".mobile-menu__image img")).toHaveAttribute(
+      "src",
+      "/images/navigation/mercedes-maybach-s680-menu-portrait.webp",
+    );
     expect(screen.getByRole("link", { name: /خودروها/ })).toHaveAttribute(
       "href",
       "/collection",

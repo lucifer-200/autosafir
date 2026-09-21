@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("home exposes the complete editorial journey with natural scrolling", async ({
+test("home exposes the cinematic scroll hero and complete editorial journey", async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -12,7 +12,19 @@ test("home exposes the complete editorial journey with natural scrolling", async
   );
   await expect(page.locator("canvas, .signature-intro")).toHaveCount(0);
   await expect(page.locator("[data-three-slot]")).toHaveCount(0);
+  await expect(page.locator(".home-hero__video")).toHaveAttribute(
+    "poster",
+    "/videos/autosafir-hero-v2-poster.jpg",
+  );
+  await expect(page.locator(".home-video-loader")).toBeAttached();
   await expect(page.locator(".home-primary-action")).toBeVisible();
+  await expect(page.locator("[data-hero-media]")).toHaveAttribute(
+    "data-load-state",
+    "ready",
+  );
+  const previewTime = await page.locator(".home-hero__video").evaluate(
+    (video) => (video as HTMLVideoElement).currentTime,
+  );
   await expect(
     page.getByRole("heading", { name: "انتخاب‌های امروز" }),
   ).toBeAttached();
@@ -26,18 +38,39 @@ test("home exposes the complete editorial journey with natural scrolling", async
     .toBeGreaterThan(0);
   await expect
     .poll(() =>
+      page
+        .locator(".home-hero__video")
+        .evaluate((video) => (video as HTMLVideoElement).currentTime),
+    )
+    .toBeGreaterThan(previewTime);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect
+    .poll(() =>
+      page
+        .locator(".home-hero__video")
+        .evaluate((video) => (video as HTMLVideoElement).currentTime),
+    )
+    .toBeLessThan(previewTime + 0.2);
+  await expect
+    .poll(() =>
       page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
     )
     .toBe(true);
   expect(errors).toEqual([]);
 });
 
-test("desktop hero cards stay inside the frame and editorial cards align", async ({
+test("desktop hero overlay stays inside the frame and editorial cards align", async ({
   page,
 }, info) => {
   test.skip(info.project.name !== "desktop-chromium", "desktop layout");
   await page.goto("/");
   await expect(page.locator(".home-vehicle-card__media")).toHaveCount(3);
+  await expect(page.locator("[data-hero-media]")).toHaveAttribute(
+    "data-load-state",
+    "ready",
+  );
+  await page.evaluate(() => window.scrollTo(0, innerHeight * 1.2));
+  await page.waitForTimeout(500);
   await page.evaluate(() => document.fonts.ready);
 
   const geometry = await page.evaluate(() => {
@@ -64,6 +97,7 @@ test("desktop hero cards stay inside the frame and editorial cards align", async
       feature: box(".home-feature-float"),
       frame: box(".home-frame"),
       action: box(".home-primary-action"),
+      header: box(".home-header"),
       media,
     };
   });
@@ -71,13 +105,13 @@ test("desktop hero cards stay inside the frame and editorial cards align", async
   expect(geometry.frame).not.toBeNull();
   expect(geometry.contact).not.toBeNull();
   expect(geometry.feature).not.toBeNull();
-  expect(geometry.contact!.bottom).toBeLessThanOrEqual(geometry.frame!.bottom);
-  expect(geometry.feature!.bottom).toBeLessThanOrEqual(geometry.frame!.bottom);
+  expect(geometry.header).not.toBeNull();
   expect(geometry.contact!.left).toBeGreaterThanOrEqual(geometry.frame!.left);
   expect(geometry.feature!.right).toBeLessThanOrEqual(geometry.frame!.right);
-  expect(geometry.action!.bottom + 16).toBeLessThanOrEqual(
-    geometry.feature!.top,
-  );
+  expect(geometry.contact!.bottom).toBeLessThanOrEqual(geometry.frame!.bottom);
+  expect(geometry.feature!.bottom).toBeLessThanOrEqual(geometry.frame!.bottom);
+  expect(geometry.action!.bottom).toBeLessThanOrEqual(geometry.frame!.bottom);
+  expect(geometry.header!.top).toBeGreaterThanOrEqual(geometry.frame!.top);
   expect(geometry.media).toHaveLength(3);
   expect(
     Math.max(...geometry.media.map(({ width }) => width)) -
@@ -109,10 +143,9 @@ test("home navigation, contact and theme persistence remain functional", async (
   page,
 }) => {
   await page.goto("/");
-  await expect(page.getByRole("link", { name: /شعبه بهشتی/ })).toHaveAttribute(
-    "href",
-    "tel:09122222346",
-  );
+  await expect(
+    page.locator('.home-branch-grid a[href="tel:02188527000"]'),
+  ).toHaveCount(2);
   await expect(
     page.locator('.home-header a[href*="sell-your-car"]'),
   ).toHaveCount(1);
@@ -129,7 +162,25 @@ test("mobile keeps a compact quick-action dock without trapping scroll", async (
   const dock = page.getByRole("navigation", { name: "دسترسی سریع" });
   await expect(dock).toBeVisible();
   await expect(dock.getByRole("link")).toHaveCount(5);
-  await page.mouse.wheel(0, 1000);
+  await expect(page.locator("[data-hero-media]")).toHaveAttribute(
+    "data-load-state",
+    "ready",
+  );
+  const mobileMedia = await page.locator(".home-hero__media").evaluate((node) => {
+    const bounds = node.getBoundingClientRect();
+
+    return {
+      height: bounds.height,
+      viewportHeight: window.innerHeight,
+      width: bounds.width,
+    };
+  });
+  expect(mobileMedia.height).toBeLessThan(mobileMedia.viewportHeight * 0.5);
+  expect(mobileMedia.width / mobileMedia.height).toBeGreaterThan(1.3);
+  await page.evaluate(() => window.scrollTo(0, innerHeight * 1.2));
+  await page.waitForTimeout(500);
+  await expect(page.locator(".home-contact-float")).toBeVisible();
+  await expect(page.locator(".home-feature-float")).toBeVisible();
   await expect
     .poll(() => page.evaluate(() => window.scrollY))
     .toBeGreaterThan(0);
@@ -138,6 +189,7 @@ test("mobile keeps a compact quick-action dock without trapping scroll", async (
 test("reduced motion keeps content accessible", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
+  await expect(page.locator(".home-video-loader")).toHaveCount(0);
   await expect(
     page.getByRole("heading", { name: "انتخاب را دقیق‌تر کنید." }),
   ).toBeAttached();

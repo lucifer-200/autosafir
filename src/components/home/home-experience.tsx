@@ -22,6 +22,7 @@ import { SHOWROOM_BRANCHES } from "@/data/branches";
 import { useVehicleStore } from "@/stores/vehicle-store";
 import type { Vehicle } from "@/types/vehicle";
 
+import { CinematicHeroMedia } from "./cinematic-hero-media";
 import { ShowroomCard } from "./showroom-card";
 import { useHomeParallax } from "./use-home-parallax";
 
@@ -138,33 +139,7 @@ export function HomeExperience() {
           <strong dir="ltr">AutoSafir</strong>
         </div>
         <div className="home-frame">
-          <div className="home-hero__media" data-hero-media>
-            <picture>
-              <source
-                media="(min-width: 1024px)"
-                type="image/avif"
-                srcSet="/images/home/showroom-desktop.avif"
-              />
-              <source
-                media="(min-width: 1024px)"
-                type="image/webp"
-                srcSet="/images/home/showroom-desktop.webp"
-              />
-              <source
-                type="image/avif"
-                srcSet="/images/home/showroom-mobile-480.avif 480w, /images/home/showroom-mobile-768.avif 768w"
-                sizes="100vw"
-              />
-              <img
-                src="/images/home/showroom-mobile-768.webp"
-                srcSet="/images/home/showroom-mobile-480.webp 480w, /images/home/showroom-mobile-768.webp 768w"
-                sizes="100vw"
-                alt="خودروی لوکس در معماری گرم نمایشگاه"
-                fetchPriority="high"
-              />
-            </picture>
-            <span className="home-hero__shade" aria-hidden="true" />
-          </div>
+          <CinematicHeroMedia />
 
           <header className="home-header">
             <Link
@@ -177,7 +152,7 @@ export function HomeExperience() {
             </Link>
             <nav aria-label="ناوبری اصلی">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href} prefetch={false}>
+                <Link key={item.href} href={item.href}>
                   {item.label}
                 </Link>
               ))}
@@ -200,22 +175,18 @@ export function HomeExperience() {
               خودروهای منتخب، مشاوره دقیق و تجربه‌ای آرام برای تصمیمی که قرار
               است ماندگار بماند.
             </p>
-            <Link
-              className="home-primary-action"
-              href="/collection"
-              prefetch={false}
-            >
+            <Link className="home-primary-action" href="/collection">
               مشاهده موجودی <ArrowUpLeft size={19} aria-hidden="true" />
             </Link>
           </div>
 
-          <div className="home-contact-float" data-parallax="9">
+          <div className="home-contact-float" data-hero-card="left">
             <ShowroomCard />
           </div>
 
           <aside
             className="home-feature-float"
-            data-parallax="14"
+            data-hero-card="right"
             aria-label="خودروی شاخص و آمار موجودی"
           >
             <p className="font-technical" dir="ltr">
@@ -248,36 +219,33 @@ export function HomeExperience() {
               </strong>
               <span>خودروی موجود</span>
             </div>
-            <Link
-              href="/collection"
-              prefetch={false}
-              aria-label="مشاهده موجودی"
-            >
+            <Link href="/collection" aria-label="مشاهده موجودی">
               <ArrowUpLeft size={21} />
             </Link>
           </aside>
+
+          <nav className="home-mobile-dock" aria-label="دسترسی سریع">
+            {dockItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link key={item.href} href={item.href}>
+                  <Icon size={19} weight="light" />
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="home-hero__footer-notes" aria-hidden="true">
+            <span className="font-technical" dir="ltr">
+              DRIVE A BRIGHTER TOMORROW
+            </span>
+            <span>اعتماد، در هر مسیر</span>
+          </div>
+          <a className="home-scroll-cue" href="#selected">
+            <span>ادامه تجربه</span>
+            <ArrowDownLeft size={19} />
+          </a>
         </div>
-        <nav className="home-mobile-dock" aria-label="دسترسی سریع">
-          {dockItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link key={item.href} href={item.href} prefetch={false}>
-                <Icon size={19} weight="light" />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="home-hero__footer-notes" aria-hidden="true">
-          <span className="font-technical" dir="ltr">
-            DRIVE A BRIGHTER TOMORROW
-          </span>
-          <span>اعتماد، در هر مسیر</span>
-        </div>
-        <a className="home-scroll-cue" href="#selected">
-          <span>ادامه تجربه</span>
-          <ArrowDownLeft size={19} />
-        </a>
       </section>
 
       <section
@@ -290,7 +258,7 @@ export function HomeExperience() {
             THE SELECTION
           </p>
           <h2 id="selected-title">انتخاب‌های امروز</h2>
-          <Link href="/collection" prefetch={false}>
+          <Link href="/collection">
             تمام موجودی <ArrowUpLeft size={18} />
           </Link>
         </header>

@@ -9,5 +9,14 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <HomeExperience />;
+  return (
+    <>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `try{if(localStorage.getItem("autosafir:hero-video:v2")==="ready"){document.documentElement.dataset.homeVideoCached="true"}else{delete document.documentElement.dataset.homeVideoCached}}catch{}`,
+        }}
+      />
+      <HomeExperience />
+    </>
+  );
 }

@@ -55,12 +55,38 @@ test("mobile menu supports keyboard dismissal and exposes no admin entry", async
     "mobile shell behavior",
   );
   await page.goto("/collection/");
+  await page.evaluate(() => window.scrollTo(0, 700));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
 
   const trigger = page.getByRole("button", { name: "باز کردن منوی اصلی" });
   await trigger.click();
 
   const dialog = page.getByRole("dialog", { name: "منوی اصلی" });
   await expect(dialog).toBeVisible();
+  const dialogBox = await dialog.boundingBox();
+  expect(dialogBox?.height).toBeGreaterThanOrEqual(
+    (page.viewportSize()?.height ?? 0) - 1,
+  );
+  await expect(dialog.locator(".mobile-menu__image img")).toHaveAttribute(
+    "src",
+    /mercedes-maybach-s680-menu-portrait/,
+  );
+
+  const initialTheme = await page.locator("html").getAttribute("data-theme");
+  const initialPanelColor = await dialog
+    .locator(".mobile-menu__panel")
+    .evaluate((element) => getComputedStyle(element).backgroundColor);
+  await dialog.getByRole("button", { name: /فعال‌کردن پوسته/ }).click();
+  await expect
+    .poll(() => page.locator("html").getAttribute("data-theme"))
+    .not.toBe(initialTheme);
+  await expect
+    .poll(() =>
+      dialog
+        .locator(".mobile-menu__panel")
+        .evaluate((element) => getComputedStyle(element).backgroundColor),
+    )
+    .not.toBe(initialPanelColor);
   await expect(dialog.getByRole("link", { name: /خودروها/ })).toHaveAttribute(
     "href",
     "/collection/",

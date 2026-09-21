@@ -25,16 +25,19 @@ export const STALE_OFFICIAL_SEED_IDS = [
   "11000000-0000-4000-8000-000000000006",
 ] as const;
 
+/** Official inventory snapshot from before technical comparison data was added. */
+export const STALE_TECHNICAL_SEED_IDS = Array.from(
+  { length: 15 },
+  (_, index) =>
+    `11000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`,
+);
+
 const advisor = {
   name: "مهابادی",
   phone: "09122222346",
 } as const;
 
-function photo(
-  id: string,
-  slug: string,
-  alt: string,
-): VehicleMedia {
+function photo(id: string, slug: string, alt: string): VehicleMedia {
   return {
     id,
     type: "IMAGE",
@@ -54,6 +57,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2018,
     mileage: 40_000,
     exteriorColor: "سفید",
+    bodyType: "کراس‌اوور کامپکت",
+    engine: "۲.۰ لیتری ۴ سیلندر توربو TSI",
+    horsepower: 180,
+    transmission: "۷ سرعته دوکلاچه DSG",
+    drivetrain: "چهارچرخ محرک 4MOTION",
+    fuelType: "بنزینی",
     features: [
       "کیلس استارت",
       "فرمان D-Cut",
@@ -91,6 +100,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2015,
     mileage: 77_000,
     exteriorColor: "خاکستری تیره",
+    bodyType: "کروک",
+    engine: "۲.۰ لیتری ۴ سیلندر توربو TwinPower",
+    horsepower: 245,
+    transmission: "۸ سرعته اتوماتیک Steptronic",
+    drivetrain: "محور عقب",
+    fuelType: "بنزینی",
     features: [
       "دو کلید",
       "سیستم صوتی Harman Kardon",
@@ -125,7 +140,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2026,
     mileage: 0,
     exteriorColor: "سفید",
-    fuelType: "هیبرید",
+    bodyType: "کراس‌اوور متوسط",
+    engine: "۲.۵ لیتری ۴ سیلندر هیبرید",
+    horsepower: 240,
+    transmission: "انتقال قدرت الکترونیکی e-CVT",
+    drivetrain: "چهارچرخ محرک E-Four",
+    fuelType: "هیبرید بنزینی",
     features: [
       "نسخه ژاپن",
       "کیلس استارت",
@@ -166,9 +186,15 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2026,
     mileage: 0,
     exteriorColor: "دورنگ سفید و مشکی",
+    bodyType: "شاسی‌بلند آفرودی",
+    engine: "۴.۰ لیتری V6",
+    horsepower: 228,
+    transmission: "۶ سرعته اتوماتیک",
+    drivetrain: "چهارچرخ محرک",
+    fuelType: "بنزینی",
     features: [],
     description:
-      "تویوتا سری ۷۰ مدل ۲۰۲۶ و صفر کیلومتر. جزئیات فنی بیشتری در منبع عمومی ذکر نشده است.",
+      "تویوتا سری ۷۰ مدل ۲۰۲۶ و صفر کیلومتر با پیشرانه ۴.۰ لیتری V6 و گیربکس ۶ سرعته اتوماتیک. برای موجودی روز تماس بگیرید.",
     media: [
       photo(
         "21000000-0000-4000-8000-000000000004",
@@ -189,7 +215,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2022,
     mileage: 52_000,
     exteriorColor: "سفید",
-    engine: "۶ سیلندر",
+    bodyType: "شاسی‌بلند آفرودی",
+    engine: "۳.۸ لیتری V6 MIVEC",
+    horsepower: 250,
+    transmission: "۵ سرعته اتوماتیک",
+    drivetrain: "چهارچرخ محرک Super Select 4WD II",
+    fuelType: "بنزینی",
     condition: "بدون رنگ",
     features: [],
     description:
@@ -215,7 +246,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2024,
     mileage: 8_000,
     exteriorColor: "سفید",
-    engine: "Twin Turbo",
+    bodyType: "شاسی‌بلند فول‌سایز",
+    engine: "۳.۵ لیتری V6 توئین‌توربو",
+    horsepower: 409,
+    transmission: "۱۰ سرعته اتوماتیک",
+    drivetrain: "چهارچرخ محرک",
+    fuelType: "بنزینی",
     features: [
       "کیلس استارت",
       "ترمز پارک برقی",
@@ -256,6 +292,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2022,
     mileage: 5_000,
     exteriorColor: "سفید",
+    bodyType: "سدان کوپه چهاردر",
+    engine: "۲.۰ لیتری ۴ سیلندر توربو",
+    horsepower: 299,
+    transmission: "۹ سرعته اتوماتیک 9G-TRONIC",
+    drivetrain: "محور عقب",
+    fuelType: "بنزینی",
     features: [
       "کیلس استارت",
       "سیستم صوتی Burmester",
@@ -293,6 +335,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2025,
     mileage: 0,
     exteriorColor: "سفید",
+    bodyType: "سدان اسپرت",
+    engine: "۲.۰ لیتری ۴ سیلندر توربو",
+    horsepower: 241,
+    transmission: "۸ سرعته اتوماتیک Sport Direct-Shift",
+    drivetrain: "محور عقب",
+    fuelType: "بنزینی",
     features: [
       "کیلس استارت",
       "دوربین ۳۶۰ درجه",
@@ -327,6 +375,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2026,
     mileage: 0,
     exteriorColor: "مشکی",
+    bodyType: "کوپه اسپرت",
+    engine: "۳.۰ لیتری ۶ سیلندر خطی توربو",
+    horsepower: 382,
+    transmission: "۸ سرعته اتوماتیک",
+    drivetrain: "محور عقب",
+    fuelType: "بنزینی",
     plateType: "پلاک ملی",
     features: [
       "کیلس استارت",
@@ -363,6 +417,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2025,
     mileage: 0,
     exteriorColor: "مشکی",
+    bodyType: "کراس‌اوور متوسط",
+    engine: "دو موتور برقی با موتور بنزینی افزایش‌دهنده برد",
+    horsepower: 483,
+    transmission: "تک‌سرعته برقی",
+    drivetrain: "چهارچرخ محرک",
+    fuelType: "برقی بردافزا",
     features: [
       "۵ حالت رانندگی",
       "کروز هوشمند",
@@ -404,6 +464,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2018,
     mileage: 0,
     exteriorColor: "سفید",
+    bodyType: "سدان لوکس",
+    engine: "۲.۰ لیتری ۴ سیلندر توربو",
+    horsepower: 252,
+    transmission: "۸ سرعته اتوماتیک Steptronic",
+    drivetrain: "محور عقب",
+    fuelType: "بنزینی",
     features: [
       "کیلس استارت",
       "ترمز پارک برقی",
@@ -439,6 +505,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2025,
     mileage: 12_000,
     exteriorColor: "سرمه‌ای",
+    bodyType: "سدان لوکس لانگ",
+    engine: "۱.۵ لیتری ۴ سیلندر توربو با هیبرید خفیف",
+    horsepower: 204,
+    transmission: "۹ سرعته اتوماتیک 9G-TRONIC",
+    drivetrain: "محور عقب",
+    fuelType: "بنزینی هیبرید خفیف",
     features: [
       "کیلس استارت",
       "صندلی جلو برقی",
@@ -473,6 +545,11 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2025,
     mileage: 0,
     exteriorColor: "سفید",
+    bodyType: "سدان کامپکت",
+    engine: "۱.۵ لیتری ۴ سیلندر با سامانه DM-i",
+    transmission: "انتقال قدرت هیبریدی EHS",
+    drivetrain: "محور جلو",
+    fuelType: "پلاگین هیبرید",
     features: [
       "کیلس استارت",
       "سانروف",
@@ -505,6 +582,10 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2025,
     mileage: 0,
     exteriorColor: "سفید",
+    bodyType: "سدان کامپکت",
+    engine: "۱.۵ لیتری ۴ سیلندر با سامانه DM-i",
+    transmission: "انتقال قدرت هیبریدی EHS",
+    drivetrain: "محور جلو",
     fuelType: "پلاگین هیبرید",
     features: ["تحویل فوری"],
     description:
@@ -529,6 +610,12 @@ export const DEMO_VEHICLE_SEED: readonly Vehicle[] = Object.freeze([
     year: 2025,
     mileage: 0,
     exteriorColor: "خاکستری",
+    bodyType: "کراس‌اوور کامپکت",
+    engine: "موتور برقی سنکرون آهنربای دائم",
+    horsepower: 204,
+    transmission: "تک‌سرعته برقی",
+    drivetrain: "محور جلو",
+    fuelType: "برقی",
     features: [
       "کیلس استارت",
       "دستگیره درب مخفی‌شونده",

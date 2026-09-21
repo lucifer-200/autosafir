@@ -2,6 +2,7 @@ import {
   DEMO_VEHICLE_SEED,
   LEGACY_PLACEHOLDER_VEHICLES,
   STALE_OFFICIAL_SEED_IDS,
+  STALE_TECHNICAL_SEED_IDS,
 } from "@/data/demo-vehicles";
 import {
   createPersistedData,
@@ -78,8 +79,30 @@ export function isStaleOfficialSeed(vehicles: readonly Vehicle[]): boolean {
   );
 }
 
+export function isStaleTechnicalSeed(vehicles: readonly Vehicle[]): boolean {
+  return (
+    vehicles.length === STALE_TECHNICAL_SEED_IDS.length &&
+    vehicles.every((vehicle) => !vehicle.updatedAt) &&
+    STALE_TECHNICAL_SEED_IDS.every((id) =>
+      vehicles.some((vehicle) => vehicle.id === id),
+    ) &&
+    vehicles.some(
+      (vehicle) =>
+        !vehicle.bodyType ||
+        !vehicle.engine ||
+        !vehicle.transmission ||
+        !vehicle.drivetrain ||
+        !vehicle.fuelType,
+    )
+  );
+}
+
 function shouldReplaceOfficialSeed(vehicles: readonly Vehicle[]): boolean {
-  return isLegacyPlaceholderSeed(vehicles) || isStaleOfficialSeed(vehicles);
+  return (
+    isLegacyPlaceholderSeed(vehicles) ||
+    isStaleOfficialSeed(vehicles) ||
+    isStaleTechnicalSeed(vehicles)
+  );
 }
 
 export function slugifyVehicle(

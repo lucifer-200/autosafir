@@ -6,6 +6,7 @@ import {
   DemoVehicleRepository,
   isLegacyPlaceholderSeed,
   isStaleOfficialSeed,
+  isStaleTechnicalSeed,
   slugifyVehicle,
   type StorageLike,
 } from "@/repositories/demo-vehicle-repository";
@@ -182,9 +183,43 @@ describe("DemoVehicleRepository", () => {
     expect(
       JSON.parse(storage.getItem(VEHICLE_STORAGE_KEY) ?? "").revision,
     ).toBe(3);
+    expect(isStaleOfficialSeed([...staleVehicles, DEMO_VEHICLE_SEED[6]])).toBe(
+      false,
+    );
+  });
+
+  it("upgrades the untouched official inventory with comparison specs", async () => {
+    const staleVehicles = DEMO_VEHICLE_SEED.map((vehicle) => ({
+      ...vehicle,
+      bodyType: undefined,
+      transmission: undefined,
+      drivetrain: undefined,
+    }));
+    storage.setItem(
+      VEHICLE_STORAGE_KEY,
+      JSON.stringify({ version: 1, revision: 7, vehicles: staleVehicles }),
+    );
+
+    const repository = makeRepository();
+    const snapshot = await repository.getSnapshot();
+
+    expect(isStaleTechnicalSeed(staleVehicles)).toBe(true);
+    expect(snapshot.vehicles).toEqual(DEMO_VEHICLE_SEED);
     expect(
-      isStaleOfficialSeed([...staleVehicles, DEMO_VEHICLE_SEED[6]]),
-    ).toBe(false);
+      JSON.parse(storage.getItem(VEHICLE_STORAGE_KEY) ?? "").revision,
+    ).toBe(8);
+  });
+
+  it("preserves an admin-edited official inventory during spec upgrades", () => {
+    const editedVehicles = DEMO_VEHICLE_SEED.map((vehicle, index) => ({
+      ...vehicle,
+      bodyType: undefined,
+      ...(index === 0
+        ? { updatedAt: "2026-09-20T00:00:00.000Z", mileage: 41_000 }
+        : {}),
+    }));
+
+    expect(isStaleTechnicalSeed(editedVehicles)).toBe(false);
   });
 
   it("generates normalized slugs and deterministic unique suffixes", async () => {

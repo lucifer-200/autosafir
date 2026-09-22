@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-test("home exposes the cinematic scroll hero and complete editorial journey", async ({
+test("home exposes the cinematic hero and complete editorial journey", async ({
   page,
-}) => {
+}, info) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/");
@@ -32,25 +32,32 @@ test("home exposes the cinematic scroll hero and complete editorial journey", as
     page.getByRole("heading", { name: "دو نقطه، یک تجربه." }),
   ).toBeAttached();
 
-  await page.mouse.wheel(0, 900);
-  await expect
-    .poll(() => page.evaluate(() => window.scrollY))
-    .toBeGreaterThan(0);
-  await expect
-    .poll(() =>
-      page
-        .locator(".home-hero__video")
-        .evaluate((video) => (video as HTMLVideoElement).currentTime),
-    )
-    .toBeGreaterThan(previewTime);
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await expect
-    .poll(() =>
-      page
-        .locator(".home-hero__video")
-        .evaluate((video) => (video as HTMLVideoElement).currentTime),
-    )
-    .toBeLessThan(previewTime + 0.2);
+  const videoTime = () =>
+    page
+      .locator(".home-hero__video")
+      .evaluate((video) => (video as HTMLVideoElement).currentTime);
+
+  if (info.project.name === "mobile-chromium") {
+    await expect(page.locator(".home-hero__video")).toHaveJSProperty(
+      "playbackRate",
+      0.75,
+    );
+    await expect
+      .poll(videoTime)
+      .toBeGreaterThan(previewTime + 0.25);
+    const heroHeight = await page.locator(".home-hero").evaluate(
+      (element) => element.getBoundingClientRect().height,
+    );
+    expect(heroHeight).toBeLessThanOrEqual(page.viewportSize()!.height + 1);
+  } else {
+    await page.mouse.wheel(0, 900);
+    await expect
+      .poll(() => page.evaluate(() => window.scrollY))
+      .toBeGreaterThan(0);
+    await expect.poll(videoTime).toBeGreaterThan(previewTime);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await expect.poll(videoTime).toBeLessThan(previewTime + 0.2);
+  }
   await expect
     .poll(() =>
       page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),

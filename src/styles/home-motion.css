@@ -857,7 +857,7 @@ html[data-home-video-cached="true"] .home-video-loader {
 
 @media (max-width: 900px) {
   .home-hero {
-    height: 540svh;
+    height: 100svh;
   }
   .home-hero__masthead {
     display: none;

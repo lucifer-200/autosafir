@@ -59,6 +59,15 @@ export function CinematicHeroMedia() {
   const [source, setSource] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
   const [state, setState] = useState<LoadState>("loading");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 900px)");
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -142,9 +151,12 @@ export function CinematicHeroMedia() {
     const openHero = () => {
       setState("opening");
       video.currentTime = 0;
+      const mobile = window.matchMedia("(max-width: 900px)").matches;
+      video.playbackRate = mobile ? 0.75 : 1;
+      video.loop = mobile;
       void video.play();
       previewTimer = window.setTimeout(() => {
-        video.pause();
+        if (!mobile) video.pause();
         setState("ready");
         window.dispatchEvent(new CustomEvent("autosafir:hero-ready"));
       }, 1050);
@@ -159,9 +171,45 @@ export function CinematicHeroMedia() {
     };
   }, [source]);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !source || state !== "ready" || !isMobile) return;
+
+    video.loop = true;
+    video.playbackRate = 0.75;
+    const hero = video.closest(".home-hero");
+    let inView = true;
+    const syncPlayback = () => {
+      if (document.hidden || !inView) {
+        video.pause();
+      } else {
+        void video.play().catch(() => undefined);
+      }
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        syncPlayback();
+      },
+      { threshold: 0.05 },
+    );
+    if (hero) observer.observe(hero);
+    document.addEventListener("visibilitychange", syncPlayback);
+    syncPlayback();
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncPlayback);
+      video.pause();
+    };
+  }, [isMobile, source, state]);
+
   useLayoutEffect(() => {
     const video = videoRef.current;
-    if (!video || state !== "ready" || !source) return;
+    if (!video || state !== "ready" || !source || isMobile) return;
+    video.loop = false;
+    video.playbackRate = 1;
+    video.pause();
     let disposed = false;
     let cleanup: () => void = () => undefined;
 
@@ -219,7 +267,7 @@ export function CinematicHeroMedia() {
       disposed = true;
       cleanup();
     };
-  }, [source, state]);
+  }, [isMobile, source, state]);
 
   return (
     <div className="home-hero__media" data-hero-media data-load-state={state}>
